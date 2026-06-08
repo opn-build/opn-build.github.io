@@ -1,0 +1,54 @@
+{
+  "_note": "Native review pending — ideally reuse the app's own ht strings. Missing keys fall back to English automatically.",
+  "meta": {
+    "title": "OpenAlive — Kenbe sesyon Windows ou aktif",
+    "description": "Yon zouti Windows lejè e prive ki kenbe sesyon ou aktif. San telemetri, san kont, lisans MIT. 8 lang."
+  },
+  "nav": {
+    "download": "Telechaje"
+  },
+  "hero": {
+    "badge": "Gratis e sou lisans MIT",
+    "eyebrow": "Pou Windows 10 ak 11",
+    "title": "Kenbe sesyon ou vivan.",
+    "subtitle": "Yon zouti lejè e prive ki kenbe sesyon Windows ou aktif — pou ou rete konekte, disponib e san entèripsyon.",
+    "cta": "Telechaje pou Windows",
+    "metaA": "San telemetri",
+    "metaB": "8 lang",
+    "metaC": "Pa bezwen admin"
+  },
+  "features": {
+    "eyebrow": "Fonksyonalite",
+    "title": "Tout sa li fè — e anyen li pa ta dwe fè",
+    "items": {
+      "mouse": { "title": "Simulasyon souri" },
+      "keyboard": { "title": "Simulasyon klavye" },
+      "schedule": { "title": "Kontwòl orè" },
+      "tray": { "title": "Bak sistèm" },
+      "languages": { "title": "8 lang" },
+      "autostart": { "title": "Demaraj otomatik" },
+      "privacy": { "title": "Vi prive an premye" }
+    }
+  },
+  "download": {
+    "eyebrow": "Dènye vèsyon",
+    "title": "Telechaje OpenAlive",
+    "subtitle": "Yon ti enstalatè. Pa bezwen admin. Enstale nan kèk segond.",
+    "button": "Telechaje pou Windows",
+    "published": "Pibliye",
+    "size": "Gwosè",
+    "history": "Wè tout vèsyon yo",
+    "unavailable": "Telechaje sou GitHub"
+  },
+  "showcase": {
+    "eyebrow": "Gade l an aksyon",
+    "title": "Twa onglè. Se tout app la.",
+    "tabs": { "status": "Estati", "schedule": "Orè", "settings": "Paramèt" }
+  },
+  "footer": {
+    "tagline": "Kenbe sesyon Windows ou aktif. Lejè, prive, milti-lang.",
+    "releases": "Vèsyon",
+    "license": "Lisans MIT",
+    "rights": "Lisans MIT · San telemetri, jamè."
+  }
+}

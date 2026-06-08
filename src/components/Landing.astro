@@ -1,0 +1,29 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "./Header.astro";
+import Hero from "./Hero.astro";
+import Showcase from "./Showcase.astro";
+import Features from "./Features.astro";
+import Download from "./Download.astro";
+import Footer from "./Footer.astro";
+import { useTranslations } from "../i18n/utils.js";
+
+const { lang, release } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Base
+  lang={lang}
+  title={t("meta.title")}
+  description={t("meta.description")}
+  release={release}
+>
+  <Header lang={lang} t={t} release={release} />
+  <main>
+    <Hero t={t} release={release} />
+    <Showcase t={t} />
+    <Features t={t} />
+    <Download t={t} release={release} lang={lang} />
+  </main>
+  <Footer t={t} />
+</Base>

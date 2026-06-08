@@ -1,0 +1,176 @@
+---
+import { Image } from "astro:assets";
+import statusShot from "../assets/screenshots/01-status.png";
+import scheduleShot from "../assets/screenshots/02-schedule.png";
+import settingsShot from "../assets/screenshots/03-settings.png";
+
+const { t } = Astro.props;
+
+const shots = [
+  { id: "status", img: statusShot, label: t("showcase.tabs.status") },
+  { id: "schedule", img: scheduleShot, label: t("showcase.tabs.schedule") },
+  { id: "settings", img: settingsShot, label: t("showcase.tabs.settings") },
+];
+---
+
+<section class="showcase" id="showcase">
+  <div class="container">
+    <header class="head">
+      <p class="eyebrow">{t("showcase.eyebrow")}</p>
+      <h2 class="section-title">{t("showcase.title")}</h2>
+    </header>
+
+    <div class="viewer">
+      {/* CSS-only tabs — no JS. */}
+      {
+        shots.map((s, i) => (
+          <input
+            type="radio"
+            name="shot"
+            id={`shot-${s.id}`}
+            class={`r r-${i}`}
+            checked={i === 0}
+          />
+        ))
+      }
+
+      <div class="tabs" role="tablist">
+        {
+          shots.map((s) => (
+            <label for={`shot-${s.id}`} class={`tab tab-${s.id}`}>
+              {s.label}
+            </label>
+          ))
+        }
+      </div>
+
+      <div class="stage">
+        {
+          shots.map((s) => (
+            <figure class={`panel panel-${s.id}`}>
+              <Image
+                src={s.img}
+                alt={s.label}
+                quality={92}
+                loading="lazy"
+              />
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .showcase {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    border-top: 1px solid var(--line-soft);
+  }
+  .head {
+    text-align: center;
+    margin-bottom: 2.6rem;
+    display: grid;
+    justify-items: center;
+  }
+  .head .section-title {
+    margin-top: 1rem;
+    max-width: 22ch;
+  }
+
+  .viewer {
+    --active: 0;
+  }
+  /* hide the radio controls; labels drive them */
+  .r {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .tabs {
+    display: inline-flex;
+    gap: 0.3rem;
+    padding: 0.35rem;
+    margin: 0 auto 2rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg-elev);
+    width: max-content;
+    max-width: 100%;
+  }
+  /* center the pill row */
+  .viewer {
+    display: grid;
+    justify-items: center;
+  }
+  .tab {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    color: var(--text-dim);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s var(--ease), background 0.2s var(--ease);
+  }
+  .tab:hover {
+    color: var(--text);
+  }
+
+  .stage {
+    position: relative;
+    width: 100%;
+    /* Cap at the screenshots' native width (~593px) so they render crisp 1:1
+       instead of being upscaled (which softened the old version). */
+    max-width: 600px;
+    display: grid;
+    place-items: center;
+  }
+  .panel {
+    grid-area: 1 / 1;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+    transition:
+      opacity 0.4s var(--ease),
+      transform 0.4s var(--ease);
+    pointer-events: none;
+  }
+  .panel :global(img) {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.02),
+      0 40px 90px -45px rgba(0, 0, 0, 0.95),
+      0 0 80px -30px var(--signal-glow);
+  }
+
+  /* Active tab highlight + active panel — wired per shot */
+  #shot-status:checked ~ .tabs .tab-status,
+  #shot-schedule:checked ~ .tabs .tab-schedule,
+  #shot-settings:checked ~ .tabs .tab-settings {
+    background: var(--signal);
+    color: #04130c;
+  }
+  #shot-status:checked ~ .stage .panel-status,
+  #shot-schedule:checked ~ .stage .panel-schedule,
+  #shot-settings:checked ~ .stage .panel-settings {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  /* keyboard focus ring on the labels for a11y */
+  .r:focus-visible ~ .tabs .tab {
+    outline: none;
+  }
+  #shot-status:focus-visible ~ .tabs .tab-status,
+  #shot-schedule:focus-visible ~ .tabs .tab-schedule,
+  #shot-settings:focus-visible ~ .tabs .tab-settings {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+  }
+</style>

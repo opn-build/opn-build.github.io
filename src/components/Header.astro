@@ -1,0 +1,82 @@
+---
+import LangSwitcher from "./LangSwitcher.astro";
+const { lang, t, release } = Astro.props;
+---
+
+<header class="hdr">
+  <div class="container row">
+    <a href={lang === "en" ? "/" : `/${lang}/`} class="brand" aria-label="OpenAlive">
+      <span class="mark"><span class="pulse"></span></span>
+      <span class="word">OpenAlive</span>
+    </a>
+
+    <nav class="actions">
+      <LangSwitcher lang={lang} />
+      <a
+        href={release.downloadUrl}
+        class="dl"
+        data-oa-download
+        download
+      >{t("nav.download")}</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding-block: 0.85rem;
+    backdrop-filter: blur(12px);
+    background: rgba(10, 11, 14, 0.62);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
+  }
+  .mark {
+    display: inline-grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--signal-deep);
+    border-radius: 8px;
+    background: var(--signal-faint);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .dl {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    padding: 0.5rem 0.95rem;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    color: var(--text);
+    transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+  }
+  .dl:hover {
+    border-color: var(--signal);
+    background: var(--signal-faint);
+    color: var(--signal);
+  }
+  @media (max-width: 540px) {
+    .dl {
+      display: none;
+    }
+  }
+</style>

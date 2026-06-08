@@ -1,0 +1,371 @@
+---
+import { formatSize, RELEASES_HTML } from "../lib/release.js";
+const { t, release, lang } = Astro.props;
+
+const size = formatSize(release.sizeBytes);
+let published = "";
+try {
+  published = new Intl.DateTimeFormat(lang, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }).format(new Date(release.publishedAt));
+} catch {
+  published = release.publishedAt?.slice(0, 10) ?? "";
+}
+---
+
+<section class="download" id="download">
+  <div class="container">
+    <div class="card">
+
+      <!-- LEFT: copy + CTA -->
+      <div class="left">
+        <p class="eyebrow">{t("download.eyebrow")}</p>
+        <h2 class="section-title">{t("download.title")}</h2>
+        <p class="sub">{t("download.subtitle")}</p>
+
+        <a
+          class="btn btn-primary big"
+          data-oa-download
+          href={release.downloadUrl}
+          rel="noopener"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M5 21h14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          {t("download.button")}
+        </a>
+
+        <p class="req">{t("download.requirements")}</p>
+
+        <a class="history" href={RELEASES_HTML} rel="noopener" target="_blank">
+          {t("download.history")}
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- RIGHT: Windows installer mockup -->
+      <div class="mock-wrap">
+        <div class="win">
+          <!-- title bar -->
+          <div class="win-bar">
+            <div class="win-title">
+              <!-- EKG icon -->
+              <svg class="win-ico" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <rect width="16" height="16" rx="4" fill="#0a1a12"/>
+                <polyline points="1,8 4,8 5.5,4 7.5,12 9,6 10.5,8 15,8"
+                  stroke="#2ee6a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>OpenAlive Setup</span>
+            </div>
+            <div class="win-ctrls" aria-hidden="true">
+              <span class="c-min">─</span>
+              <span class="c-max">□</span>
+              <span class="c-cls">✕</span>
+            </div>
+          </div>
+
+          <!-- body -->
+          <div class="win-body">
+            <!-- checkmark -->
+            <div class="check-wrap">
+              <svg class="check" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+                <circle cx="26" cy="26" r="24" stroke="var(--signal)" stroke-width="2.5" fill="var(--signal-faint)"/>
+                <polyline class="tick" points="14,27 22,35 38,18"
+                  stroke="var(--signal)" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  fill="none"/>
+              </svg>
+            </div>
+
+            <p class="done-label">Installation complete</p>
+            <p class="done-sub">OpenAlive is ready to run.</p>
+
+            <!-- progress -->
+            <div class="prog-track" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+              <div class="prog-fill"></div>
+              <span class="prog-pct">100%</span>
+            </div>
+
+            <!-- perks -->
+            <ul class="perks">
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke="var(--signal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                No admin rights required
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke="var(--signal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-oa-size>{size}</span>&nbsp;· installs in seconds
+              </li>
+              <li>
+                <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5" stroke="var(--signal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Zero telemetry · runs offline
+              </li>
+            </ul>
+
+            <!-- footer row -->
+            <div class="win-foot">
+              <span class="ver-tag"><span data-oa-version>{release.version}</span></span>
+              <div class="fin-btn" aria-hidden="true">Finish</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- hidden meta for the refresh script -->
+        <span style="display:none" data-oa-date>{published}</span>
+        <span style="display:none" data-oa-asset>{release.assetName}</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .download {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.8rem, 4vw, 3rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(700px 300px at 100% 0%, var(--signal-faint), transparent 60%),
+      linear-gradient(180deg, var(--bg-elev) 0%, var(--bg-elev-2) 100%);
+    box-shadow: 0 40px 100px -50px rgba(0, 0, 0, 0.9);
+  }
+
+  /* ── LEFT ─────────────────────────────── */
+  .section-title { margin-top: 0.9rem; }
+  .sub {
+    margin-top: 1rem;
+    color: var(--text-dim);
+    max-width: 40ch;
+  }
+  .big {
+    margin-top: 1.8rem;
+    --btn-pad-y: 1.05rem;
+    font-size: 1.05rem;
+  }
+  .req {
+    margin-top: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+    line-height: 1.7;
+  }
+  .history {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--signal);
+    transition: gap 0.2s var(--ease);
+  }
+  .history:hover { gap: 0.65rem; }
+
+  /* ── MOCK WRAP ────────────────────────── */
+  .mock-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── WINDOW ───────────────────────────── */
+  .win {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--bg-elev-2, #13161c);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.04) inset,
+      0 30px 70px -20px rgba(0,0,0,0.9),
+      0 0 60px -20px var(--signal-glow);
+    overflow: hidden;
+  }
+
+  .win-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.55rem 0.9rem;
+    background: rgba(0,0,0,0.35);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .win-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  .win-ico {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .win-ctrls {
+    display: flex;
+    gap: 0.05rem;
+    font-size: 0.72rem;
+  }
+  .c-min, .c-max, .c-cls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 20px;
+    color: var(--text-faint);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    transition: background 0.15s;
+  }
+  .c-cls:hover { background: #c42b1c; color: #fff; }
+  .c-min:hover, .c-max:hover { background: rgba(255,255,255,0.08); }
+
+  .win-body {
+    padding: 1.6rem 1.4rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* checkmark */
+  .check-wrap {
+    margin-bottom: 1rem;
+  }
+  .check {
+    width: 54px;
+    height: 54px;
+    filter: drop-shadow(0 0 12px var(--signal-glow));
+  }
+  .tick {
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    animation: draw-tick 0.5s 0.3s var(--ease) forwards;
+  }
+  @keyframes draw-tick {
+    to { stroke-dashoffset: 0; }
+  }
+
+  .done-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .done-sub {
+    margin-top: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+
+  /* progress */
+  .prog-track {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    margin-top: 1.3rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    overflow: hidden;
+  }
+  .prog-fill {
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    background: linear-gradient(90deg, var(--signal-deep), var(--signal));
+    border-radius: inherit;
+    animation: fill-bar 0.7s 0.15s var(--ease) forwards;
+    box-shadow: 0 0 8px var(--signal-glow);
+  }
+  @keyframes fill-bar {
+    to { width: 100%; }
+  }
+  .prog-pct {
+    position: absolute;
+    right: 0;
+    top: -1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--signal);
+  }
+
+  /* perks */
+  .perks {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .perks li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+  }
+  .perks li svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* footer row */
+  .win-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line-soft);
+  }
+  .ver-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+  .fin-btn {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 0.4rem 1.1rem;
+    border-radius: 6px;
+    background: var(--signal);
+    color: #04130c;
+    font-weight: 700;
+    cursor: default;
+    user-select: none;
+  }
+
+  @media (max-width: 780px) {
+    .card {
+      grid-template-columns: 1fr;
+    }
+    .mock-wrap {
+      border-top: 1px solid var(--line-soft);
+      padding-top: 1.5rem;
+    }
+  }
+</style>

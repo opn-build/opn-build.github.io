@@ -1,0 +1,115 @@
+---
+import { LOCALES, localePath } from "../i18n/utils.js";
+const { lang } = Astro.props;
+const current = LOCALES.find((l) => l.code === lang) ?? LOCALES[0];
+---
+
+<details class="lang">
+  <summary aria-label="Change language">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
+      <path
+        d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"
+        stroke="currentColor"
+        stroke-width="1.6"
+      />
+    </svg>
+    <span>{current.label}</span>
+    <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg>
+  </summary>
+  <ul role="menu">
+    {
+      LOCALES.map((l) => (
+        <li>
+          <a
+            href={`${localePath(l.code)}/`}
+            class:list={["lang-item", { active: l.code === lang }]}
+            hreflang={l.code}
+          >
+            <span>{l.label}</span>
+            {l.code === lang && <span class="dot" aria-hidden="true" />}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</details>
+
+<style>
+  .lang {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+  }
+  summary {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    color: var(--text-dim);
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary:hover {
+    border-color: var(--signal-deep);
+    color: var(--text);
+  }
+  .chev {
+    transition: transform 0.2s var(--ease);
+    color: var(--text-faint);
+  }
+  .lang[open] .chev {
+    transform: rotate(180deg);
+  }
+  ul {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 168px;
+    list-style: none;
+    background: var(--bg-elev-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.35rem;
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+    z-index: 50;
+    animation: drop 0.18s var(--ease);
+  }
+  @keyframes drop {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+  .lang-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    color: var(--text-dim);
+    transition: background 0.15s var(--ease), color 0.15s var(--ease);
+  }
+  .lang-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+  }
+  .lang-item.active {
+    color: var(--signal);
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--signal);
+  }
+</style>

@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "OpenAlive — Keep your Windows session active",
+    "description": "A lightweight, private Windows utility that keeps your session active. No telemetry, no accounts, MIT licensed. 8 languages."
+  },
+  "nav": {
+    "download": "Download"
+  },
+  "hero": {
+    "badge": "Free & MIT licensed",
+    "eyebrow": "For Windows 10 & 11",
+    "title": "Keep your session alive.",
+    "subtitle": "A lightweight, private utility that keeps your Windows session active — so you stay logged in, available, and uninterrupted.",
+    "cta": "Download for Windows",
+    "metaA": "No telemetry",
+    "metaB": "8 languages",
+    "metaC": "No admin needed"
+  },
+  "features": {
+    "eyebrow": "Features",
+    "title": "Everything it does — and nothing it shouldn't",
+    "items": {
+      "mouse": {
+        "title": "Mouse simulation",
+        "desc": "Tiny, configurable cursor moves at a set interval — barely noticeable, enough to stay active."
+      },
+      "keyboard": {
+        "title": "Keyboard simulation",
+        "desc": "Sends a harmless key — Shift, F13, ScrollLock and more — on a schedule you control."
+      },
+      "schedule": {
+        "title": "Schedule control",
+        "desc": "Define work hours and an optional lunch break. OpenAlive only acts when you want it to."
+      },
+      "tray": {
+        "title": "System tray",
+        "desc": "Lives quietly in the tray. Green when active, gray when idle — your state at a glance."
+      },
+      "languages": {
+        "title": "8 languages",
+        "desc": "Switch language live, no restart. English, Español, Português and five more."
+      },
+      "autostart": {
+        "title": "Autostart",
+        "desc": "Optionally launches with Windows. No admin rights, no fuss."
+      },
+      "privacy": {
+        "title": "Privacy first",
+        "desc": "No telemetry, no network calls, no accounts. It never leaves your machine."
+      }
+    }
+  },
+  "download": {
+    "eyebrow": "Latest release",
+    "title": "Download OpenAlive",
+    "subtitle": "One small installer. No admin rights. Installs in seconds.",
+    "button": "Download for Windows",
+    "published": "Published",
+    "size": "Size",
+    "requirements": "Windows 10 (1903+) or Windows 11 · ~13 MB RAM · ~25 MB disk",
+    "history": "View all releases",
+    "unavailable": "Download from GitHub"
+  },
+  "showcase": {
+    "eyebrow": "See it in action",
+    "title": "Three tabs. That's the whole app.",
+    "tabs": { "status": "Status", "schedule": "Schedule", "settings": "Settings" }
+  },
+  "footer": {
+    "tagline": "Keep your Windows session active. Lightweight, private, multilingual.",
+    "releases": "Releases",
+    "license": "MIT License",
+    "rights": "MIT licensed · No telemetry, ever."
+  }
+}

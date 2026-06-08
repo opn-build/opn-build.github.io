@@ -1,0 +1,17 @@
+---
+import Landing from "../../components/Landing.astro";
+import { getLatestRelease } from "../../lib/release.js";
+import { nonDefaultLocales } from "../../i18n/utils.js";
+
+export async function getStaticPaths() {
+  // One page per non-default locale: /es/, /pt/, /fr/, /ja/, /zh/, /ko/, /ht/
+  return nonDefaultLocales().map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+
+// Build-time fetch — same baked release across every locale.
+const release = await getLatestRelease();
+---
+
+<Landing lang={lang} release={release} />

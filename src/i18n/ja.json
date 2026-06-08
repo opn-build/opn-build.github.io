@@ -1,0 +1,54 @@
+{
+  "_note": "Native review pending — ideally reuse the app's own ja strings. Missing keys fall back to English automatically.",
+  "meta": {
+    "title": "OpenAlive — Windows のセッションをアクティブに保つ",
+    "description": "セッションをアクティブに保つ、軽量でプライベートな Windows ユーティリティ。テレメトリなし、アカウント不要、MIT ライセンス。8 言語対応。"
+  },
+  "nav": {
+    "download": "ダウンロード"
+  },
+  "hero": {
+    "badge": "無料・MIT ライセンス",
+    "eyebrow": "Windows 10 / 11 対応",
+    "title": "セッションを生かし続ける。",
+    "subtitle": "Windows のセッションをアクティブに保つ、軽量でプライベートなユーティリティ。ログイン状態を維持し、いつでも応答可能に。",
+    "cta": "Windows 用をダウンロード",
+    "metaA": "テレメトリなし",
+    "metaB": "8 言語",
+    "metaC": "管理者権限不要"
+  },
+  "features": {
+    "eyebrow": "機能",
+    "title": "必要なことはすべて、余計なことは何も",
+    "items": {
+      "mouse": { "title": "マウスのシミュレーション" },
+      "keyboard": { "title": "キーボードのシミュレーション" },
+      "schedule": { "title": "スケジュール制御" },
+      "tray": { "title": "システムトレイ" },
+      "languages": { "title": "8 言語" },
+      "autostart": { "title": "自動起動" },
+      "privacy": { "title": "プライバシー優先" }
+    }
+  },
+  "download": {
+    "eyebrow": "最新リリース",
+    "title": "OpenAlive をダウンロード",
+    "subtitle": "小さなインストーラー。管理者権限不要。数秒でインストール。",
+    "button": "Windows 用をダウンロード",
+    "published": "公開日",
+    "size": "サイズ",
+    "history": "すべてのリリースを見る",
+    "unavailable": "GitHub からダウンロード"
+  },
+  "showcase": {
+    "eyebrow": "実際の動作",
+    "title": "3 つのタブ。これがアプリのすべて。",
+    "tabs": { "status": "ステータス", "schedule": "スケジュール", "settings": "設定" }
+  },
+  "footer": {
+    "tagline": "Windows のセッションをアクティブに。軽量・プライベート・多言語。",
+    "releases": "リリース",
+    "license": "MIT ライセンス",
+    "rights": "MIT ライセンス · テレメトリは一切なし。"
+  }
+}

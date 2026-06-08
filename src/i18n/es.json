@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "title": "OpenAlive — Mantené tu sesión de Windows activa",
+    "description": "Una utilidad de Windows liviana y privada que mantiene tu sesión activa. Sin telemetría, sin cuentas, licencia MIT. 8 idiomas."
+  },
+  "nav": {
+    "download": "Descargar"
+  },
+  "hero": {
+    "badge": "Gratis y con licencia MIT",
+    "eyebrow": "Para Windows 10 y 11",
+    "title": "Mantené tu sesión viva.",
+    "subtitle": "Una utilidad liviana y privada que mantiene activa tu sesión de Windows — para que sigas conectado, disponible y sin interrupciones.",
+    "cta": "Descargar para Windows",
+    "metaA": "Sin telemetría",
+    "metaB": "8 idiomas",
+    "metaC": "Sin permisos de admin"
+  },
+  "features": {
+    "eyebrow": "Características",
+    "title": "Todo lo que hace — y nada que no debería",
+    "items": {
+      "mouse": {
+        "title": "Simulación de mouse",
+        "desc": "Pequeños movimientos del cursor, configurables, a intervalos regulares — casi imperceptibles, suficientes para mantenerte activo."
+      },
+      "keyboard": {
+        "title": "Simulación de teclado",
+        "desc": "Envía una tecla inofensiva — Shift, F13, ScrollLock y más — según el intervalo que elijas."
+      },
+      "schedule": {
+        "title": "Control de horario",
+        "desc": "Definí tu jornada y una pausa de almuerzo opcional. OpenAlive solo actúa cuando vos querés."
+      },
+      "tray": {
+        "title": "Bandeja del sistema",
+        "desc": "Vive discreto en la bandeja. Verde cuando está activo, gris cuando no — tu estado de un vistazo."
+      },
+      "languages": {
+        "title": "8 idiomas",
+        "desc": "Cambiá de idioma en vivo, sin reiniciar. Español, English, Português y cinco más."
+      },
+      "autostart": {
+        "title": "Inicio automático",
+        "desc": "Opcionalmente arranca con Windows. Sin permisos de administrador, sin complicaciones."
+      },
+      "privacy": {
+        "title": "Privacidad primero",
+        "desc": "Sin telemetría, sin llamadas de red, sin cuentas. Nunca sale de tu máquina."
+      }
+    }
+  },
+  "download": {
+    "eyebrow": "Último release",
+    "title": "Descargá OpenAlive",
+    "subtitle": "Un instalador pequeño. Sin permisos de admin. Se instala en segundos.",
+    "button": "Descargar para Windows",
+    "published": "Publicado",
+    "size": "Tamaño",
+    "requirements": "Windows 10 (1903+) o Windows 11 · ~13 MB RAM · ~25 MB de disco",
+    "history": "Ver todos los releases",
+    "unavailable": "Descargar desde GitHub"
+  },
+  "showcase": {
+    "eyebrow": "Velo en acción",
+    "title": "Tres pestañas. Eso es toda la app.",
+    "tabs": { "status": "Estado", "schedule": "Horario", "settings": "Ajustes" }
+  },
+  "footer": {
+    "tagline": "Mantené tu sesión de Windows activa. Liviana, privada, multilingüe.",
+    "releases": "Releases",
+    "license": "Licencia MIT",
+    "rights": "Licencia MIT · Sin telemetría, nunca."
+  }
+}

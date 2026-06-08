@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+import { LOCALES, DEFAULT_LOCALE, localePath } from "../i18n/utils.js";
+import { RELEASES_REPO } from "../lib/release.js";
+
+const {
+  lang = DEFAULT_LOCALE,
+  title,
+  description,
+  release,
+} = Astro.props;
+
+const site = "https://opn-build.github.io";
+const canonical = `${site}${localePath(lang)}/`;
+// hreflang alternates for every locale (good multilingual SEO hygiene)
+const alternates = LOCALES.map((l) => ({
+  code: l.code,
+  href: `${site}${localePath(l.code)}/`,
+}));
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0a0b0e" />
+
+    {
+      alternates.map((a) => (
+        <link rel="alternate" hreflang={a.code} href={a.href} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${site}/og-image.png`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site}/og-image.png`} />
+
+    <!-- Distinctive type: display + body + technical mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bake the build-time release so the client refresh has a baseline -->
+    <meta name="oa:repo" content={RELEASES_REPO} />
+    <meta name="oa:version" content={release?.version ?? ""} />
+  </head>
+  <body>
+    <slot />
+    <script src="/scripts/refresh.js" defer></script>
+  </body>
+</html>

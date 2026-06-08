@@ -1,0 +1,54 @@
+{
+  "_note": "Native review pending — ideally reuse the app's own zh strings. Missing keys fall back to English automatically.",
+  "meta": {
+    "title": "OpenAlive — 让你的 Windows 会话保持活跃",
+    "description": "一款轻量、私密的 Windows 工具，让你的会话保持活跃。无遥测、无账户、MIT 许可。支持 8 种语言。"
+  },
+  "nav": {
+    "download": "下载"
+  },
+  "hero": {
+    "badge": "免费 · MIT 许可",
+    "eyebrow": "适用于 Windows 10 和 11",
+    "title": "让你的会话保持活跃。",
+    "subtitle": "一款轻量、私密的工具，让你的 Windows 会话保持活跃——始终在线、随时可用、不被打断。",
+    "cta": "下载 Windows 版",
+    "metaA": "无遥测",
+    "metaB": "8 种语言",
+    "metaC": "无需管理员权限"
+  },
+  "features": {
+    "eyebrow": "功能",
+    "title": "该做的全做到，不该做的一概不做",
+    "items": {
+      "mouse": { "title": "鼠标模拟" },
+      "keyboard": { "title": "键盘模拟" },
+      "schedule": { "title": "时间控制" },
+      "tray": { "title": "系统托盘" },
+      "languages": { "title": "8 种语言" },
+      "autostart": { "title": "开机自启" },
+      "privacy": { "title": "隐私优先" }
+    }
+  },
+  "download": {
+    "eyebrow": "最新版本",
+    "title": "下载 OpenAlive",
+    "subtitle": "一个小巧的安装包。无需管理员权限。几秒即可安装。",
+    "button": "下载 Windows 版",
+    "published": "发布于",
+    "size": "大小",
+    "history": "查看所有版本",
+    "unavailable": "从 GitHub 下载"
+  },
+  "showcase": {
+    "eyebrow": "实际效果",
+    "title": "三个标签页，这就是全部。",
+    "tabs": { "status": "状态", "schedule": "计划", "settings": "设置" }
+  },
+  "footer": {
+    "tagline": "让你的 Windows 会话保持活跃。轻量、私密、多语言。",
+    "releases": "版本",
+    "license": "MIT 许可",
+    "rights": "MIT 许可 · 永不收集遥测。"
+  }
+}

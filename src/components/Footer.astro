@@ -1,0 +1,99 @@
+---
+import { RELEASES_HTML, RELEASES_REPO } from "../lib/release.js";
+const { t } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="ft">
+  <div class="container inner">
+    <div class="brand-col">
+      <div class="brand">
+        <span class="mark"><span class="pulse"></span></span>
+        <span class="word">OpenAlive</span>
+      </div>
+      <p class="tag">{t("footer.tagline")}</p>
+    </div>
+
+    <nav class="links">
+      <a href={RELEASES_HTML} rel="noopener" target="_blank">{t("footer.releases")}</a>
+      <a
+        href={`https://github.com/${RELEASES_REPO}#license`}
+        rel="noopener"
+        target="_blank">{t("footer.license")}</a
+      >
+      <a href={`https://github.com/${RELEASES_REPO}`} rel="noopener" target="_blank"
+        >GitHub</a
+      >
+    </nav>
+  </div>
+
+  <div class="container base">
+    <span>© {year} OpenAlive</span>
+    <span class="rights">{t("footer.rights")}</span>
+  </div>
+</footer>
+
+<style>
+  .ft {
+    border-top: 1px solid var(--line-soft);
+    padding-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .mark {
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--signal-deep);
+    border-radius: 7px;
+    background: var(--signal-faint);
+  }
+  .tag {
+    margin-top: 0.9rem;
+    max-width: 38ch;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+  }
+  .links a {
+    color: var(--text-dim);
+    transition: color 0.2s var(--ease);
+  }
+  .links a:hover {
+    color: var(--signal);
+  }
+  .base {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.5rem;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+</style>

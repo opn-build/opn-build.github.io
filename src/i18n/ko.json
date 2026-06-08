@@ -1,0 +1,54 @@
+{
+  "_note": "Native review pending — ideally reuse the app's own ko strings. Missing keys fall back to English automatically.",
+  "meta": {
+    "title": "OpenAlive — Windows 세션을 활성 상태로 유지",
+    "description": "세션을 활성 상태로 유지하는 가볍고 사생활을 지키는 Windows 유틸리티. 텔레메트리 없음, 계정 불필요, MIT 라이선스. 8개 언어 지원."
+  },
+  "nav": {
+    "download": "다운로드"
+  },
+  "hero": {
+    "badge": "무료 · MIT 라이선스",
+    "eyebrow": "Windows 10 및 11 지원",
+    "title": "세션을 살아 있게 유지하세요.",
+    "subtitle": "Windows 세션을 활성 상태로 유지하는 가볍고 사생활을 지키는 유틸리티 — 로그인 상태를 유지하고 언제든 응답 가능하게.",
+    "cta": "Windows용 다운로드",
+    "metaA": "텔레메트리 없음",
+    "metaB": "8개 언어",
+    "metaC": "관리자 권한 불필요"
+  },
+  "features": {
+    "eyebrow": "기능",
+    "title": "필요한 건 전부, 불필요한 건 하나도 없이",
+    "items": {
+      "mouse": { "title": "마우스 시뮬레이션" },
+      "keyboard": { "title": "키보드 시뮬레이션" },
+      "schedule": { "title": "일정 제어" },
+      "tray": { "title": "시스템 트레이" },
+      "languages": { "title": "8개 언어" },
+      "autostart": { "title": "자동 시작" },
+      "privacy": { "title": "프라이버시 우선" }
+    }
+  },
+  "download": {
+    "eyebrow": "최신 릴리스",
+    "title": "OpenAlive 다운로드",
+    "subtitle": "작은 설치 프로그램. 관리자 권한 불필요. 몇 초면 설치 완료.",
+    "button": "Windows용 다운로드",
+    "published": "게시일",
+    "size": "크기",
+    "history": "모든 릴리스 보기",
+    "unavailable": "GitHub에서 다운로드"
+  },
+  "showcase": {
+    "eyebrow": "실제 동작",
+    "title": "탭 세 개. 그게 전부입니다.",
+    "tabs": { "status": "상태", "schedule": "일정", "settings": "설정" }
+  },
+  "footer": {
+    "tagline": "Windows 세션을 활성 상태로. 가볍고, 사생활을 지키며, 다국어 지원.",
+    "releases": "릴리스",
+    "license": "MIT 라이선스",
+    "rights": "MIT 라이선스 · 텔레메트리는 절대 없음."
+  }
+}

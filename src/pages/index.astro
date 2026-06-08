@@ -1,0 +1,10 @@
+---
+import Landing from "../components/Landing.astro";
+import { getLatestRelease } from "../lib/release.js";
+import { DEFAULT_LOCALE } from "../i18n/utils.js";
+
+// Build-time fetch — baked into the static HTML.
+const release = await getLatestRelease();
+---
+
+<Landing lang={DEFAULT_LOCALE} release={release} />

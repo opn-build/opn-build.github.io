@@ -1,0 +1,265 @@
+/* ============================================================
+   OpenAlive — design tokens & base
+   Aesthetic: utilitarian / technical. Graphite near-black, a single
+   "signal" green (the active tray color) used with restraint, a quiet
+   heartbeat motif. Type: Bricolage Grotesque + Hanken Grotesk + JetBrains Mono.
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --bg: #0a0b0e;
+  --bg-elev: #101216;
+  --bg-elev-2: #15181d;
+  --line: #23262d;
+  --line-soft: #1a1d23;
+
+  /* Text */
+  --text: #e8eaed;
+  --text-dim: #9aa1ac;
+  --text-faint: #5b626c;
+
+  /* Signal — the "alive" green, matched to the active tray icon */
+  --signal: #2ee6a0;
+  --signal-bright: #4dffba;
+  --signal-deep: #128a63;
+  --signal-glow: rgba(46, 230, 160, 0.16);
+  --signal-faint: rgba(46, 230, 160, 0.08);
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", "Hanken Grotesk", sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Rhythm */
+  --maxw: 1120px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 1.0625rem;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Atmosphere: a signal glow up top, a faint technical grid, and grain.
+   Layered so the dark surface never reads as a flat, dead rectangle. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(
+      900px 520px at 50% -8%,
+      var(--signal-glow),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #0c0e12 0%, var(--bg) 38%, #08090c 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(
+    760px 600px at 50% 0%,
+    rgba(0, 0, 0, 0.5),
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    760px 600px at 50% 0%,
+    rgba(0, 0, 0, 0.5),
+    transparent 78%
+  );
+  opacity: 0.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--signal);
+  color: #04130c;
+}
+
+/* ---------- Layout primitives ---------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--signal), transparent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  --btn-pad-y: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: var(--btn-pad-y) 1.6rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.18s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+  will-change: transform;
+}
+
+.btn-primary {
+  background: var(--signal);
+  color: #04130c;
+  box-shadow:
+    0 0 0 1px rgba(46, 230, 160, 0.4),
+    0 14px 40px -14px var(--signal);
+}
+
+.btn-primary:hover {
+  background: var(--signal-bright);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(77, 255, 186, 0.55),
+    0 22px 50px -16px var(--signal);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--signal-deep);
+  color: var(--signal);
+  transform: translateY(-1px);
+}
+
+/* ---------- The heartbeat / "alive" dot ---------- */
+.pulse {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--signal);
+  flex: none;
+}
+
+.pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--signal);
+  animation: pulse-ring 2s var(--ease) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(3.4);
+    opacity: 0;
+  }
+}
+
+/* ---------- Entrance reveals (staggered) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: reveal 0.8s var(--ease) forwards;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
