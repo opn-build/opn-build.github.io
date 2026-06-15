@@ -2,20 +2,20 @@
 // Used at BUILD TIME (Astro frontmatter) to bake the download into static HTML,
 // and mirrored client-side by /scripts/refresh.js for freshness between deploys.
 
-export const RELEASES_REPO = "opn-build/OpenAlive-Releases";
+export const RELEASES_REPO = "opn-build/OpenAlive";
 export const RELEASES_API = `https://api.github.com/repos/${RELEASES_REPO}/releases/latest`;
 export const RELEASES_HTML = `https://github.com/${RELEASES_REPO}/releases`;
 
 // Baked fallback — used if the GitHub API is unreachable during the build.
 // Keep this in sync with the most recent known release.
 const FALLBACK = {
-  version: "v1.0.3",
-  tag: "v1.0.3",
-  assetName: "OpenAlive_Setup_v1.0.3.exe",
+  version: "v1.1.0",
+  tag: "v1.1.0",
+  assetName: "OpenAlive_Setup_v1.1.0.exe",
   downloadUrl:
-    "https://github.com/opn-build/OpenAlive-Releases/releases/download/v1.0.3/OpenAlive_Setup_v1.0.3.exe",
-  sizeBytes: 16221003,
-  publishedAt: "2026-06-02T00:00:00Z",
+    "https://github.com/opn-build/OpenAlive/releases/download/v1.1.0/OpenAlive_Setup_v1.1.0.exe",
+  sizeBytes: 5363207,
+  publishedAt: "2026-06-15T02:08:07Z",
   fromFallback: true,
 };
 

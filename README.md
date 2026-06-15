@@ -2,7 +2,7 @@
 
 Landing page for **OpenAlive** — a lightweight, private Windows utility that keeps your session active.
 
-Built with [Astro](https://astro.build) (static output), deployed to GitHub Pages. The page always points to the **latest release** of [`opn-build/OpenAlive-Releases`](https://github.com/opn-build/OpenAlive-Releases).
+Built with [Astro](https://astro.build) (static output), deployed to GitHub Pages. The page always points to the **latest release** of [`opn-build/OpenAlive`](https://github.com/opn-build/OpenAlive).
 
 ## How the "latest release" stays current
 
