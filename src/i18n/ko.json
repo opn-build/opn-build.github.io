@@ -48,7 +48,7 @@
   "footer": {
     "tagline": "Windows 세션을 활성 상태로. 가볍고, 사생활을 지키며, 다국어 지원.",
     "releases": "릴리스",
-    "license": "MIT 라이선스",
-    "rights": "MIT 라이선스 · 텔레메트리는 절대 없음."
+    "license": "Open source",
+    "rights": "Open source · 텔레메트리는 절대 없음."
   }
 }

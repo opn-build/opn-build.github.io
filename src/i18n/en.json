@@ -69,7 +69,7 @@
   "footer": {
     "tagline": "Keep your Windows session active. Lightweight, private, multilingual.",
     "releases": "Releases",
-    "license": "MIT License",
-    "rights": "MIT licensed · No telemetry, ever."
+    "license": "Open source",
+    "rights": "Open source · No telemetry, ever."
   }
 }

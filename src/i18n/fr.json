@@ -69,7 +69,7 @@
   "footer": {
     "tagline": "Gardez votre session Windows active. Léger, privé, multilingue.",
     "releases": "Versions",
-    "license": "Licence MIT",
-    "rights": "Sous licence MIT · Aucune télémétrie, jamais."
+    "license": "Open source",
+    "rights": "Open source · Aucune télémétrie, jamais."
   }
 }

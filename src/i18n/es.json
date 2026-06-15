@@ -69,7 +69,7 @@
   "footer": {
     "tagline": "Mantené tu sesión de Windows activa. Liviana, privada, multilingüe.",
     "releases": "Releases",
-    "license": "Licencia MIT",
-    "rights": "Licencia MIT · Sin telemetría, nunca."
+    "license": "Open source",
+    "rights": "Open source · Sin telemetría, nunca."
   }
 }

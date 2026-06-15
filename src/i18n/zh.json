@@ -48,7 +48,7 @@
   "footer": {
     "tagline": "让你的 Windows 会话保持活跃。轻量、私密、多语言。",
     "releases": "版本",
-    "license": "MIT 许可",
-    "rights": "MIT 许可 · 永不收集遥测。"
+    "license": "Open source",
+    "rights": "Open source · 永不收集遥测。"
   }
 }
