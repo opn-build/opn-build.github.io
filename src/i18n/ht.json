@@ -2,7 +2,7 @@
   "_note": "Native review pending — ideally reuse the app's own ht strings. Missing keys fall back to English automatically.",
   "meta": {
     "title": "OpenAlive — Kenbe sesyon Windows ou aktif",
-    "description": "Yon zouti Windows lejè e prive ki kenbe sesyon ou aktif. San telemetri, san kont, lisans MIT. 8 lang."
+    "description": "Yon zouti Windows lejè, prive e open source ki kenbe sesyon ou aktif. San telemetri, san kont. 8 lang."
   },
   "nav": {
     "download": "Telechaje"

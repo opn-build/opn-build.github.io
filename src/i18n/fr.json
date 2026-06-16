@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "OpenAlive — Gardez votre session Windows active",
-    "description": "Un utilitaire Windows léger et privé qui garde votre session active. Sans télémétrie, sans compte, licence MIT. 8 langues."
+    "description": "Un utilitaire Windows léger, privé et open source qui garde votre session active. Sans télémétrie, sans compte. 8 langues."
   },
   "nav": {
     "download": "Télécharger"

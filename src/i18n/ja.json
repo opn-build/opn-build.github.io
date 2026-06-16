@@ -2,7 +2,7 @@
   "_note": "Native review pending — ideally reuse the app's own ja strings. Missing keys fall back to English automatically.",
   "meta": {
     "title": "OpenAlive — Windows のセッションをアクティブに保つ",
-    "description": "セッションをアクティブに保つ、軽量でプライベートな Windows ユーティリティ。テレメトリなし、アカウント不要、MIT ライセンス。8 言語対応。"
+    "description": "セッションをアクティブに保つ、軽量でプライベートなオープンソースの Windows ユーティリティ。テレメトリなし、アカウント不要。8 言語対応。"
   },
   "nav": {
     "download": "ダウンロード"

@@ -2,7 +2,7 @@
   "_note": "Native review pending — ideally reuse the app's own ko strings. Missing keys fall back to English automatically.",
   "meta": {
     "title": "OpenAlive — Windows 세션을 활성 상태로 유지",
-    "description": "세션을 활성 상태로 유지하는 가볍고 사생활을 지키는 Windows 유틸리티. 텔레메트리 없음, 계정 불필요, MIT 라이선스. 8개 언어 지원."
+    "description": "세션을 활성 상태로 유지하는 가볍고, 사생활을 지키는 오픈 소스 Windows 유틸리티. 텔레메트리 없음, 계정 불필요. 8개 언어 지원."
   },
   "nav": {
     "download": "다운로드"

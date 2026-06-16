@@ -2,7 +2,7 @@
   "_note": "Native review pending — ideally reuse the app's own zh strings. Missing keys fall back to English automatically.",
   "meta": {
     "title": "OpenAlive — 让你的 Windows 会话保持活跃",
-    "description": "一款轻量、私密的 Windows 工具，让你的会话保持活跃。无遥测、无账户、MIT 许可。支持 8 种语言。"
+    "description": "一款轻量、私密、开源的 Windows 工具，让你的会话保持活跃。无遥测、无账户。支持 8 种语言。"
   },
   "nav": {
     "download": "下载"

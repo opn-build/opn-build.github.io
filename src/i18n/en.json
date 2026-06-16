@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "OpenAlive — Keep your Windows session active",
-    "description": "A lightweight, private Windows utility that keeps your session active. No telemetry, no accounts, MIT licensed. 8 languages."
+    "description": "A lightweight, private, open source Windows utility that keeps your session active. No telemetry, no accounts. 8 languages."
   },
   "nav": {
     "download": "Download"
