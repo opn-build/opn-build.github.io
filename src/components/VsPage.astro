@@ -1,0 +1,273 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import { DEFAULT_LOCALE, useTranslations } from "../i18n/utils.js";
+import { getLatestRelease } from "../lib/release.js";
+
+const {
+  slug,
+  competitor,
+  tagline,
+  metaDescription,
+  summary,
+  rows,
+  chooseOpenAlive,
+  chooseCompetitor,
+} = Astro.props;
+
+const release = await getLatestRelease();
+const t = useTranslations(DEFAULT_LOCALE);
+const site = "https://opn-build.github.io";
+const downloadUrl = release?.downloadUrl ?? `${site}/#download`;
+---
+
+<Base
+  lang={DEFAULT_LOCALE}
+  title={`OpenAlive vs ${competitor} — ${tagline}`}
+  description={metaDescription}
+  release={release}
+  canonical={`${site}/vs-${slug}`}
+  noAlternates={true}
+>
+  <Header lang={DEFAULT_LOCALE} t={t} release={release} />
+
+  <main class="vs-main">
+    <div class="container">
+
+      <nav class="breadcrumb">
+        <a href="/">← OpenAlive</a>
+        <span>vs {competitor}</span>
+      </nav>
+
+      <header class="vs-hero">
+        <h1>OpenAlive <span class="vs-label">vs</span> {competitor}</h1>
+        <p class="vs-sub">{tagline}</p>
+      </header>
+
+      <section class="summary-grid">
+        <div class="summary-card card-oa">
+          <p class="card-name">OpenAlive</p>
+          <p>{summary.openalive}</p>
+        </div>
+        <div class="summary-card card-comp">
+          <p class="card-name">{competitor}</p>
+          <p>{summary.competitor}</p>
+        </div>
+      </section>
+
+      <section class="table-section">
+        <h2>Feature comparison</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>OpenAlive</th>
+                <th>{competitor}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row: { feature: string; oa: string; comp: string; highlight?: boolean }) => (
+                <tr class={row.highlight ? "highlight" : ""}>
+                  <td>{row.feature}</td>
+                  <td set:html={row.oa} />
+                  <td set:html={row.comp} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="choose-section">
+        <div class="choose-card">
+          <h3>Choose OpenAlive if…</h3>
+          <ul>
+            {chooseOpenAlive.map((item: string) => <li>{item}</li>)}
+          </ul>
+          <a class="cta-btn" href={downloadUrl}>Download OpenAlive — free</a>
+        </div>
+        <div class="choose-card choose-comp">
+          <h3>Choose {competitor} if…</h3>
+          <ul>
+            {chooseCompetitor.map((item: string) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer t={t} />
+</Base>
+
+<style>
+  .vs-main {
+    padding-block: clamp(3rem, 7vw, 5rem);
+  }
+  .breadcrumb {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+  }
+  .breadcrumb a {
+    color: var(--signal);
+  }
+  .breadcrumb span::before {
+    content: "/";
+    margin-right: 0.6rem;
+    opacity: 0.4;
+  }
+
+  .vs-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .vs-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .vs-label {
+    color: var(--text-dim);
+    font-weight: 500;
+    font-size: 0.7em;
+    vertical-align: middle;
+    padding-inline: 0.3em;
+  }
+  .vs-sub {
+    margin-top: 0.8rem;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    max-width: 52ch;
+    margin-inline: auto;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
+  }
+  @media (max-width: 600px) {
+    .summary-grid { grid-template-columns: 1fr; }
+  }
+  .summary-card {
+    padding: 1.4rem 1.6rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--bg-elev);
+  }
+  .card-oa {
+    border-color: var(--signal-deep);
+    background: var(--signal-faint);
+  }
+  .card-name {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .card-oa .card-name {
+    color: var(--signal);
+  }
+
+  .table-section {
+    margin-bottom: 3.5rem;
+  }
+  .table-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  thead th {
+    background: var(--bg-elev);
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--line);
+  }
+  thead th:first-child { width: 36%; }
+  tbody td {
+    padding: 0.75rem 1.2rem;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr.highlight td:nth-child(2) {
+    color: var(--signal);
+    font-weight: 500;
+  }
+  :global(.check) { color: var(--signal); }
+  :global(.cross) { color: var(--text-faint); }
+
+  .choose-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 600px) {
+    .choose-section { grid-template-columns: 1fr; }
+  }
+  .choose-card {
+    padding: 1.6rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--signal-deep);
+    background: var(--signal-faint);
+  }
+  .choose-comp {
+    border-color: var(--line);
+    background: var(--bg-elev);
+  }
+  .choose-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+  }
+  .choose-card ul {
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    margin-bottom: 1.4rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--signal);
+    color: #04130c;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.65rem 1.3rem;
+    border-radius: 999px;
+    transition: opacity 0.2s var(--ease);
+  }
+  .cta-btn:hover { opacity: 0.85; }
+</style>

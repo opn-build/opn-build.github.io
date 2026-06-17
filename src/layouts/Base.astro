@@ -8,10 +8,12 @@ const {
   title,
   description,
   release,
+  canonical: canonicalOverride,
+  noAlternates = false,
 } = Astro.props;
 
 const site = "https://opn-build.github.io";
-const canonical = `${site}${localePath(lang)}/`;
+const canonical = canonicalOverride ?? `${site}${localePath(lang)}/`;
 // hreflang alternates for every locale (good multilingual SEO hygiene)
 const alternates = LOCALES.map((l) => ({
   code: l.code,
@@ -31,11 +33,12 @@ const alternates = LOCALES.map((l) => ({
     <meta name="theme-color" content="#0a0b0e" />
 
     {
-      alternates.map((a) => (
-        <link rel="alternate" hreflang={a.code} href={a.href} />
-      ))
+      !noAlternates &&
+        alternates.map((a) => (
+          <link rel="alternate" hreflang={a.code} href={a.href} />
+        ))
     }
-    <link rel="alternate" hreflang="x-default" href={`${site}/`} />
+    {!noAlternates && <link rel="alternate" hreflang="x-default" href={`${site}/`} />}
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
