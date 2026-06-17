@@ -12,6 +12,19 @@ const year = new Date().getFullYear();
         <span class="word">OpenAlive</span>
       </div>
       <p class="tag">{t("footer.tagline")}</p>
+      <a
+        class="ph-badge"
+        href="https://www.producthunt.com/products/openalive-keep-your-pc-active?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-openalive-keep-your-pc-active"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          alt="OpenAlive — Keep your PC active | Product Hunt"
+          width="250"
+          height="54"
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1174562&theme=dark&t=1781721204600"
+        />
+      </a>
     </div>
 
     <nav class="links">
@@ -72,6 +85,10 @@ const year = new Date().getFullYear();
     max-width: 38ch;
     color: var(--text-dim);
     font-size: 0.95rem;
+  }
+  .ph-badge {
+    display: inline-block;
+    margin-top: 1.2rem;
   }
   .links {
     display: flex;
