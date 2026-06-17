@@ -4,17 +4,19 @@
     "description": "A lightweight, private, open source Windows utility that keeps your session active. No telemetry, no accounts. 8 languages."
   },
   "nav": {
-    "download": "Download"
+    "download": "Download",
+    "github": "Source code"
   },
   "hero": {
-    "badge": "Free & MIT licensed",
+    "badge": "Free & open source · GPLv3",
     "eyebrow": "For Windows 10 & 11",
     "title": "Keep your session alive.",
-    "subtitle": "A lightweight, private, open source utility that keeps your Windows session active — so you stay logged in, available, and uninterrupted.",
+    "subtitle": "A lightweight, open source utility that prevents sleep mode, screen lock, and away status — so your PC stays on and your session stays active.",
     "cta": "Download for Windows",
     "metaA": "No telemetry",
     "metaB": "8 languages",
-    "metaC": "No admin needed"
+    "metaC": "No admin needed",
+    "metaD": "No sleep mode"
   },
   "features": {
     "eyebrow": "Features",
@@ -67,7 +69,7 @@
     "tabs": { "status": "Status", "schedule": "Schedule", "settings": "Settings" }
   },
   "footer": {
-    "tagline": "Keep your Windows session active. Lightweight, private, multilingual.",
+    "tagline": "Free, open source, and private. No telemetry, ever. GPLv3.",
     "releases": "Releases",
     "license": "Open source",
     "rights": "Open source · No telemetry, ever."

@@ -55,6 +55,7 @@ const size = formatSize(release.sizeBytes);
         <li>{t("hero.metaA")}</li>
         <li>{t("hero.metaB")}</li>
         <li>{t("hero.metaC")}</li>
+        <li>{t("hero.metaD")}</li>
       </ul>
     </div>
 
@@ -86,6 +87,7 @@ const size = formatSize(release.sizeBytes);
           <div><dt>mouse</dt><dd>every 30s</dd></div>
           <div><dt>keyboard</dt><dd>F13</dd></div>
           <div><dt>schedule</dt><dd>09–18 · lunch off</dd></div>
+          <div><dt>sleep</dt><dd class="blocked">blocked</dd></div>
         </dl>
       </div>
     </aside>
@@ -263,6 +265,10 @@ const size = formatSize(release.sizeBytes);
   }
   .readout dd {
     color: var(--text-dim);
+  }
+  .readout dd.blocked {
+    color: var(--signal);
+    font-weight: 600;
   }
 
   @media (max-width: 880px) {
