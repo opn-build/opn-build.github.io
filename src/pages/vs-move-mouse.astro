@@ -5,8 +5,8 @@ import VsPage from "../components/VsPage.astro";
 <VsPage
   slug="move-mouse"
   competitor="Move Mouse"
-  tagline="A simpler, truly open source alternative for keeping your PC active"
-  metaDescription="OpenAlive vs Move Mouse — compare features, licensing, and simplicity. OpenAlive is free, open source (GPLv3), and requires no scripts or accounts."
+  tagline="Simpler setup, lunch break built in, no scripts required"
+  metaDescription="OpenAlive vs Move Mouse — both are GPLv3 open source. Compare features: lunch break window, keystroke simulation, languages, and simplicity."
   summary={{
     openalive:
       "A lightweight, single .exe utility focused on one job: keeping your Windows session active. No scripts, no accounts, no bloat. Work schedule and lunch break built in.",
@@ -14,13 +14,13 @@ import VsPage from "../components/VsPage.astro";
       "A feature-rich Windows app with script support, mouse automation, and scheduling. More powerful but heavier, with a more complex UI.",
   }}
   rows={[
-    { feature: "License", oa: "GPLv3 — fully open source", comp: "Free on Microsoft Store (source not public)" },
+    { feature: "License", oa: "GPLv3 — open source", comp: "GPLv3 — open source" },
     { feature: "Cursor movement", oa: '<span class="check">✓</span> Imperceptible — returns to exact position', comp: '<span class="check">✓</span> Configurable, visible by default', highlight: true },
     { feature: "Keystroke simulation", oa: '<span class="check">✓</span> Shift, F13, ScrollLock and more', comp: '<span class="check">✓</span> Yes' },
     { feature: "Work schedule", oa: '<span class="check">✓</span> Start/end time, daily', comp: '<span class="check">✓</span> Yes, with more options' },
     { feature: "Lunch break window", oa: '<span class="check">✓</span> Built in', comp: '<span class="cross">–</span> Not natively', highlight: true },
     { feature: "Script / macro support", oa: '<span class="cross">–</span> Not needed for basic use', comp: '<span class="check">✓</span> Full scripting engine' },
-    { feature: "App blacklist", oa: '<span class="cross">–</span>', comp: '<span class="check">✓</span> Pause when specific apps run' },
+    { feature: "Blackout windows", oa: '<span class="cross">–</span>', comp: '<span class="check">✓</span> Disable activity during set time windows' },
     { feature: "Languages", oa: '<span class="check">✓</span> 8 languages', comp: "English only" },
     { feature: "Installer size", oa: "~6 MB", comp: "~10 MB+" },
     { feature: "RAM at idle", oa: "~5–15 MB", comp: "~25–40 MB" },
@@ -29,14 +29,15 @@ import VsPage from "../components/VsPage.astro";
   ]}
   chooseOpenAlive={[
     "You want a single .exe with no setup",
-    "You need a lunch break window",
-    "You prefer fully open source software (GPLv3)",
+    "You need a dedicated lunch break window",
     "You work in a non-English language",
     "You want minimal RAM and disk usage",
+    "You prefer a focused tool that does one job simply",
   ]}
   chooseCompetitor={[
-    "You need scripting or macro automation",
-    "You want to pause based on which app is in focus",
+    "You need PowerShell scripting or macro automation",
+    "You need cron-based advanced scheduling",
+    "You need blackout windows beyond a simple lunch break",
     "You already use Move Mouse and it works well",
   ]}
 />
