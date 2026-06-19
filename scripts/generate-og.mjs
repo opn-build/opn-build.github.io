@@ -43,8 +43,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
       <stop offset="1" stop-color="${C.signal}" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glowLogo" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="${C.signal}" stop-opacity="0.22"/>
-      <stop offset="0.6" stop-color="${C.signal}" stop-opacity="0.06"/>
+      <stop offset="0" stop-color="${C.signal}" stop-opacity="0.34"/>
+      <stop offset="0.6" stop-color="${C.signal}" stop-opacity="0.08"/>
       <stop offset="1" stop-color="${C.signal}" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="head" x1="0" y1="0" x2="0" y2="1">
@@ -65,8 +65,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
   <path d="${ekg}" fill="none" stroke="${C.signal}" stroke-opacity="0.10"
         stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- glow behind the icon (composited separately) -->
-  <circle cx="960" cy="315" r="165" fill="url(#glowLogo)"/>
+  <!-- glow behind the logo -->
+  <circle cx="965" cy="315" r="230" fill="url(#glowLogo)"/>
 
   <!-- inset frame -->
   <rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" fill="none"
@@ -89,57 +89,25 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
         fill="url(#head)" letter-spacing="-3">PC alive.</text>
 
   <!-- meta line -->
-  <text x="86" y="520" font-family="${MONO}" font-size="24" fill="${C.dim}" xml:space="preserve"><tspan>No telemetry</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>~4 MB</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>Open source</tspan></text>
+  <text x="86" y="520" font-family="${MONO}" font-size="24" fill="${C.dim}" xml:space="preserve"><tspan>No admin rights</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>~4 MB</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>Open source</tspan></text>
 
   <!-- url -->
   <text x="${W - 40}" y="${H - 36}" text-anchor="end" font-family="${MONO}"
         font-size="22" fill="${C.faint}">opn-build.github.io</text>
 </svg>`;
 
-// ── Cursor overlay (composited on top of logo so it's always visible) ──────
-// Trail moves diagonally: ghosts go upper-left, main cursor bottom-right.
-// Tip positions are relative to the overlay's own (0,0).
-const CUR = `M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z`;
-const cursorSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="140" height="175">
-  <g transform="translate(0,0) scale(2.5)" opacity="0.08">
-    <path d="${CUR}" fill="${C.signal}"/>
-  </g>
-  <g transform="translate(25,25) scale(2.5)" opacity="0.20">
-    <path d="${CUR}" fill="${C.signal}" stroke="${C.bgTop}" stroke-width="0.7" stroke-linejoin="round"/>
-  </g>
-  <g transform="translate(50,50) scale(2.5)" opacity="0.42">
-    <path d="${CUR}" fill="${C.signal}" stroke="${C.bgTop}" stroke-width="0.8" stroke-linejoin="round"/>
-  </g>
-  <g transform="translate(75,75) scale(2.5)">
-    <path d="${CUR}" fill="${C.signal}" stroke="${C.bgTop}" stroke-width="1" stroke-linejoin="round"/>
-    <path d="M 1,2 L 1,18 L 5,14 Z" fill="white" fill-opacity="0.30"/>
-  </g>
-  <circle cx="75" cy="75" r="3" fill="${C.signal}" opacity="0.90"/>
-  <circle cx="75" cy="75" r="10" fill="none" stroke="${C.signal}" stroke-width="1.2" stroke-opacity="0.35"/>
-  <circle cx="75" cy="75" r="18" fill="none" stroke="${C.signal}" stroke-width="0.8" stroke-opacity="0.15"/>
-</svg>`;
-
 const iconPath = join(root, "src", "assets", "icono.png");
 
-const LOGO = 280; // hero icon, right side — nearest-neighbor preserves crisp edges
-const logo = await sharp(iconPath)
-  .resize(LOGO, LOGO, { kernel: sharp.kernel.nearest })
-  .png().toBuffer();
-
-// Cursor overlay — rendered from SVG with transparent background
-const cursor = await sharp(Buffer.from(cursorSvg)).png().toBuffer();
-// Position so main cursor tip (local 75,75) lands at world (1020, 300)
-const CUR_LEFT = 1020 - 75; // = 945
-const CUR_TOP  = 300  - 75; // = 225
+const LOGO = 300; // hero logo, right side
+const logo = await sharp(iconPath).resize(LOGO, LOGO).png().toBuffer();
 
 const MARK = 58; // brand lockup icon, top-left next to the wordmark
 const mark = await sharp(iconPath).resize(MARK, MARK).png().toBuffer();
 
 await sharp(Buffer.from(svg))
   .composite([
-    { input: logo,   left: 960 - LOGO / 2, top: 315 - LOGO / 2 },
-    { input: cursor, left: CUR_LEFT,        top: CUR_TOP },
-    { input: mark,   left: 80,              top: 72 },
+    { input: logo, left: 965 - LOGO / 2, top: 315 - LOGO / 2 },
+    { input: mark, left: 80, top: 72 },
   ])
   .png()
   .toFile(join(root, "public", "og-image.png"));
