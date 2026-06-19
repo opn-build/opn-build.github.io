@@ -44,6 +44,16 @@ const alternates = LOCALES.map((l) => ({
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OpenAlive" />
+    <meta property="og:locale" content={
+      lang === "zh" ? "zh_CN" :
+      lang === "pt" ? "pt_BR" :
+      lang === "ja" ? "ja_JP" :
+      lang === "ko" ? "ko_KR" :
+      lang === "fr" ? "fr_FR" :
+      lang === "es" ? "es_ES" :
+      lang === "ht" ? "ht_HT" : "en_US"
+    } />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -63,13 +73,18 @@ const alternates = LOCALES.map((l) => ({
       "name": "OpenAlive",
       "operatingSystem": "Windows",
       "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "SystemUtility",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "downloadUrl": "https://github.com/opn-build/OpenAlive/releases",
       "softwareVersion": release?.version ?? "",
       "license": "https://www.gnu.org/licenses/gpl-3.0.html",
       "description": description,
       "url": canonical,
-      "inLanguage": lang
+      "inLanguage": lang,
+      "screenshot": "https://opn-build.github.io/og-image.png",
+      "featureList": "Keep session active, No telemetry, No admin rights, Scheduled activation, System tray, 8 languages",
+      "author": { "@type": "Organization", "name": "opn-build", "url": "https://github.com/opn-build" },
+      "publisher": { "@type": "Organization", "name": "opn-build", "url": "https://github.com/opn-build" }
     })} />
 
     <!-- Distinctive type: display + body + technical mono -->
