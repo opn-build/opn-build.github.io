@@ -29,6 +29,7 @@
       setAttr("[data-oa-download]", "href", asset.browser_download_url);
       setText("[data-oa-version]", version);
       setText("[data-oa-size]", formatSize(asset.size));
+      setText("[data-oa-disk]", formatSize(asset.size * 1.7));
       setText("[data-oa-asset]", asset.name);
       setText("[data-oa-date]", formatDate(rel.published_at));
     })

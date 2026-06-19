@@ -9,13 +9,13 @@ export const RELEASES_HTML = `https://github.com/${RELEASES_REPO}/releases`;
 // Baked fallback — used if the GitHub API is unreachable during the build.
 // Keep this in sync with the most recent known release.
 const FALLBACK = {
-  version: "v1.1.0.1",
-  tag: "v1.1.0.1",
-  assetName: "OpenAlive_Setup_v1.1.0.1.exe",
+  version: "v1.2.0.0",
+  tag: "v1.2.0.0",
+  assetName: "OpenAlive_Setup_v1.2.0.0.exe",
   downloadUrl:
-    "https://github.com/opn-build/OpenAlive/releases/download/v1.1.0.1/OpenAlive_Setup_v1.1.0.1.exe",
-  sizeBytes: 5384812,
-  publishedAt: "2026-06-15T21:34:00Z",
+    "https://github.com/opn-build/OpenAlive/releases/download/v1.2.0.0/OpenAlive_Setup_v1.2.0.0.exe",
+  sizeBytes: 3928866,
+  publishedAt: "2026-06-19T11:11:13Z",
   fromFallback: true,
 };
 

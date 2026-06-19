@@ -59,7 +59,7 @@
     "button": "Descargar para Windows",
     "published": "Publicado",
     "size": "Tamaño",
-    "requirements": "Windows 10 (1903+) o Windows 11 · ~13 MB RAM · ~25 MB de disco",
+    "requirements": "Windows 10 (1903+) o Windows 11 · ~13 MB RAM",
     "history": "Ver todos los releases",
     "unavailable": "Descargar desde GitHub"
   },

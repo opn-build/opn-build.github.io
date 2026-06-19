@@ -3,6 +3,8 @@ import { formatSize, RELEASES_HTML } from "../lib/release.js";
 const { t, release, lang } = Astro.props;
 
 const size = formatSize(release.sizeBytes);
+// Installed size ≈ installer × 1.7 (lzma2 decompression ratio for this app).
+const installedSize = formatSize(release.sizeBytes * 1.7);
 let published = "";
 try {
   published = new Intl.DateTimeFormat(lang, {
@@ -43,7 +45,7 @@ try {
           {t("download.button")}
         </a>
 
-        <p class="req">{t("download.requirements")}</p>
+        <p class="req">{t("download.requirements")} · <span data-oa-disk>{installedSize}</span> disk</p>
 
         <a class="history" href={RELEASES_HTML} rel="noopener" target="_blank">
           {t("download.history")}
