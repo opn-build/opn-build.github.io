@@ -43,9 +43,9 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
       <stop offset="0" stop-color="${C.signal}" stop-opacity="0.16"/>
       <stop offset="1" stop-color="${C.signal}" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glowLogo" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="${C.signal}" stop-opacity="0.34"/>
-      <stop offset="0.6" stop-color="${C.signal}" stop-opacity="0.08"/>
+    <radialGradient id="glowCursor" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="${C.signal}" stop-opacity="0.22"/>
+      <stop offset="0.6" stop-color="${C.signal}" stop-opacity="0.06"/>
       <stop offset="1" stop-color="${C.signal}" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="head" x1="0" y1="0" x2="0" y2="1">
@@ -66,8 +66,32 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
   <path d="${ekg}" fill="none" stroke="${C.signal}" stroke-opacity="0.10"
         stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- glow behind the logo -->
-  <circle cx="965" cy="315" r="230" fill="url(#glowLogo)"/>
+  <!-- cursor glow -->
+  <circle cx="950" cy="320" r="155" fill="url(#glowCursor)"/>
+
+  <!-- ghost cursor 2 — furthest back -->
+  <g transform="translate(805,158) scale(5)" opacity="0.10">
+    <path d="M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z"
+          fill="${C.signal}"/>
+  </g>
+
+  <!-- ghost cursor 1 — middle -->
+  <g transform="translate(845,196) scale(5)" opacity="0.28">
+    <path d="M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z"
+          fill="${C.signal}" stroke="${C.bgTop}" stroke-width="0.6" stroke-linejoin="round"/>
+  </g>
+
+  <!-- main cursor -->
+  <g transform="translate(886,234) scale(5)">
+    <path d="M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z"
+          fill="${C.signal}" stroke="${C.bgTop}" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M 1,2 L 1,18 L 5,14 Z" fill="white" fill-opacity="0.28"/>
+  </g>
+
+  <!-- click ripple at tip -->
+  <circle cx="886" cy="234" r="5" fill="${C.signal}" opacity="0.85"/>
+  <circle cx="886" cy="234" r="16" fill="none" stroke="${C.signal}" stroke-width="1.5" stroke-opacity="0.30"/>
+  <circle cx="886" cy="234" r="28" fill="none" stroke="${C.signal}" stroke-width="1" stroke-opacity="0.12"/>
 
   <!-- inset frame -->
   <rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" fill="none"
@@ -87,10 +111,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
   <text x="80" y="330" font-family="${DISPLAY}" font-size="96"
         fill="url(#head)" letter-spacing="-3">Keep your</text>
   <text x="80" y="430" font-family="${DISPLAY}" font-size="96"
-        fill="url(#head)" letter-spacing="-3">session alive.</text>
+        fill="url(#head)" letter-spacing="-3">PC alive.</text>
 
   <!-- meta line -->
-  <text x="86" y="520" font-family="${MONO}" font-size="24" fill="${C.dim}" xml:space="preserve"><tspan>No telemetry</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>8 languages</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>GPL-3.0</tspan></text>
+  <text x="86" y="520" font-family="${MONO}" font-size="24" fill="${C.dim}" xml:space="preserve"><tspan>No telemetry</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>~4 MB</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>Open source</tspan></text>
 
   <!-- url -->
   <text x="${W - 40}" y="${H - 36}" text-anchor="end" font-family="${MONO}"
@@ -99,15 +123,11 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
 
 const iconPath = join(root, "src", "assets", "icono.png");
 
-const LOGO = 300; // hero logo, right side
-const logo = await sharp(iconPath).resize(LOGO, LOGO).png().toBuffer();
-
 const MARK = 58; // brand lockup icon, top-left next to the wordmark
 const mark = await sharp(iconPath).resize(MARK, MARK).png().toBuffer();
 
 await sharp(Buffer.from(svg))
   .composite([
-    { input: logo, left: 965 - LOGO / 2, top: 315 - LOGO / 2 },
     { input: mark, left: 80, top: 72 },
   ])
   .png()
