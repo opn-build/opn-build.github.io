@@ -43,7 +43,10 @@
   "showcase": {
     "eyebrow": "실제 동작",
     "title": "탭 세 개. 그게 전부입니다.",
-    "tabs": { "status": "상태", "schedule": "일정", "settings": "설정" }
+    "tabs": { "status": "상태", "schedule": "일정", "settings": "설정" },
+    "statusAlt": "OpenAlive 상태 탭 — 활동 토글과 실시간 로그",
+    "scheduleAlt": "OpenAlive 일정 탭 — 근무 시간 및 점심 휴식 설정",
+    "settingsAlt": "OpenAlive 설정 탭 — 이동 간격, 키 입력 및 언어 옵션"
   },
   "footer": {
     "tagline": "Windows 세션을 활성 상태로. 가볍고, 사생활을 지키며, 다국어 지원.",

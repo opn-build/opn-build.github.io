@@ -64,7 +64,10 @@
   "showcase": {
     "eyebrow": "Veja em ação",
     "title": "Três abas. É o app inteiro.",
-    "tabs": { "status": "Status", "schedule": "Horário", "settings": "Ajustes" }
+    "tabs": { "status": "Status", "schedule": "Horário", "settings": "Ajustes" },
+    "statusAlt": "Aba Status do OpenAlive com controle de atividade e log em tempo real",
+    "scheduleAlt": "Aba Horário do OpenAlive com configuração de jornada e pausa do almoço",
+    "settingsAlt": "Aba Configurações do OpenAlive com intervalo de movimento, tecla e opções de idioma"
   },
   "footer": {
     "tagline": "Mantenha sua sessão do Windows ativa. Leve, privada, multilíngue.",

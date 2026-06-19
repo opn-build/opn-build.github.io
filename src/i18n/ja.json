@@ -43,7 +43,10 @@
   "showcase": {
     "eyebrow": "実際の動作",
     "title": "3 つのタブ。これがアプリのすべて。",
-    "tabs": { "status": "ステータス", "schedule": "スケジュール", "settings": "設定" }
+    "tabs": { "status": "ステータス", "schedule": "スケジュール", "settings": "設定" },
+    "statusAlt": "OpenAlive のステータスタブ — アクティビティ切り替えとライブログ",
+    "scheduleAlt": "OpenAlive のスケジュールタブ — 勤務時間と昼休みの設定",
+    "settingsAlt": "OpenAlive の設定タブ — 移動間隔、キー入力、言語オプション"
   },
   "footer": {
     "tagline": "Windows のセッションをアクティブに。軽量・プライベート・多言語。",

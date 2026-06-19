@@ -43,7 +43,10 @@
   "showcase": {
     "eyebrow": "Gade l an aksyon",
     "title": "Twa onglè. Se tout app la.",
-    "tabs": { "status": "Estati", "schedule": "Orè", "settings": "Paramèt" }
+    "tabs": { "status": "Estati", "schedule": "Orè", "settings": "Paramèt" },
+    "statusAlt": "Onglet Estati OpenAlive ki montre kontwòl aktivite ak jounal an tan reyèl",
+    "scheduleAlt": "Onglet Orè OpenAlive ak konfigirasyon lè travay ak poz manje midi",
+    "settingsAlt": "Onglet Paramèt OpenAlive ak entèval mouvman, frapè ak opsyon lang"
   },
   "footer": {
     "tagline": "Kenbe sesyon Windows ou aktif. Lejè, prive, milti-lang.",

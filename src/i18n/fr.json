@@ -64,7 +64,10 @@
   "showcase": {
     "eyebrow": "Voyez-le en action",
     "title": "Trois onglets. C'est toute l'appli.",
-    "tabs": { "status": "Statut", "schedule": "Horaires", "settings": "Réglages" }
+    "tabs": { "status": "Statut", "schedule": "Horaires", "settings": "Réglages" },
+    "statusAlt": "Onglet Statut d'OpenAlive avec contrôle d'activité et journal en temps réel",
+    "scheduleAlt": "Onglet Horaires d'OpenAlive avec configuration des heures de travail et pause déjeuner",
+    "settingsAlt": "Onglet Réglages d'OpenAlive avec intervalle de mouvement, touche et options de langue"
   },
   "footer": {
     "tagline": "Gardez votre session Windows active. Léger, privé, multilingue.",

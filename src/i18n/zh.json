@@ -43,7 +43,10 @@
   "showcase": {
     "eyebrow": "实际效果",
     "title": "三个标签页，这就是全部。",
-    "tabs": { "status": "状态", "schedule": "计划", "settings": "设置" }
+    "tabs": { "status": "状态", "schedule": "计划", "settings": "设置" },
+    "statusAlt": "OpenAlive 状态标签页，显示活动切换和实时日志",
+    "scheduleAlt": "OpenAlive 计划标签页，配置工作时间和午休时段",
+    "settingsAlt": "OpenAlive 设置标签页，包含移动间隔、按键和语言选项"
   },
   "footer": {
     "tagline": "让你的 Windows 会话保持活跃。轻量、私密、多语言。",

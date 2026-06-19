@@ -66,7 +66,10 @@
   "showcase": {
     "eyebrow": "Velo en acción",
     "title": "Tres pestañas. Eso es toda la app.",
-    "tabs": { "status": "Estado", "schedule": "Horario", "settings": "Ajustes" }
+    "tabs": { "status": "Estado", "schedule": "Horario", "settings": "Ajustes" },
+    "statusAlt": "Pestaña Estado de OpenAlive con control de actividad y registro en tiempo real",
+    "scheduleAlt": "Pestaña Horario de OpenAlive con configuración de jornada laboral y pausa de almuerzo",
+    "settingsAlt": "Pestaña Ajustes de OpenAlive con intervalo de movimiento, tecla y opciones de idioma"
   },
   "footer": {
     "tagline": "Gratis, open source y privado. Sin telemetría, nunca. GPLv3.",

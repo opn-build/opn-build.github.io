@@ -7,9 +7,9 @@ import settingsShot from "../assets/screenshots/03-settings.jpg";
 const { t } = Astro.props;
 
 const shots = [
-  { id: "status", img: statusShot, label: t("showcase.tabs.status") },
-  { id: "schedule", img: scheduleShot, label: t("showcase.tabs.schedule") },
-  { id: "settings", img: settingsShot, label: t("showcase.tabs.settings") },
+  { id: "status", img: statusShot, label: t("showcase.tabs.status"), alt: t("showcase.tabs.statusAlt") },
+  { id: "schedule", img: scheduleShot, label: t("showcase.tabs.schedule"), alt: t("showcase.tabs.scheduleAlt") },
+  { id: "settings", img: settingsShot, label: t("showcase.tabs.settings"), alt: t("showcase.tabs.settingsAlt") },
 ];
 ---
 
@@ -50,7 +50,7 @@ const shots = [
             <figure class={`panel panel-${s.id}`}>
               <Image
                 src={s.img}
-                alt={s.label}
+                alt={s.alt}
                 quality={92}
                 loading="lazy"
               />

@@ -51,6 +51,22 @@ const alternates = LOCALES.map((l) => ({
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${site}/og-image.png`} />
 
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OpenAlive",
+      "operatingSystem": "Windows",
+      "applicationCategory": "UtilitiesApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "downloadUrl": "https://github.com/opn-build/OpenAlive/releases",
+      "softwareVersion": release?.version ?? "",
+      "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+      "description": description,
+      "url": canonical,
+      "inLanguage": lang
+    })} />
+
     <!-- Distinctive type: display + body + technical mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
