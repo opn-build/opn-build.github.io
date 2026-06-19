@@ -3,7 +3,6 @@
 // Renders an SVG (site's dark "signal" language) with sharp, then composites
 // the real app logo on top. Requires Bricolage Grotesque installed for text.
 import sharp from "sharp";
-import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -43,7 +42,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
       <stop offset="0" stop-color="${C.signal}" stop-opacity="0.16"/>
       <stop offset="1" stop-color="${C.signal}" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glowCursor" cx="50%" cy="50%" r="50%">
+    <radialGradient id="glowLogo" cx="50%" cy="50%" r="50%">
       <stop offset="0" stop-color="${C.signal}" stop-opacity="0.22"/>
       <stop offset="0.6" stop-color="${C.signal}" stop-opacity="0.06"/>
       <stop offset="1" stop-color="${C.signal}" stop-opacity="0"/>
@@ -66,32 +65,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
   <path d="${ekg}" fill="none" stroke="${C.signal}" stroke-opacity="0.10"
         stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- cursor glow -->
-  <circle cx="950" cy="320" r="155" fill="url(#glowCursor)"/>
-
-  <!-- ghost cursor 2 — furthest back -->
-  <g transform="translate(805,158) scale(5)" opacity="0.10">
-    <path d="M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z"
-          fill="${C.signal}"/>
-  </g>
-
-  <!-- ghost cursor 1 — middle -->
-  <g transform="translate(845,196) scale(5)" opacity="0.28">
-    <path d="M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z"
-          fill="${C.signal}" stroke="${C.bgTop}" stroke-width="0.6" stroke-linejoin="round"/>
-  </g>
-
-  <!-- main cursor -->
-  <g transform="translate(886,234) scale(5)">
-    <path d="M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z"
-          fill="${C.signal}" stroke="${C.bgTop}" stroke-width="1.2" stroke-linejoin="round"/>
-    <path d="M 1,2 L 1,18 L 5,14 Z" fill="white" fill-opacity="0.28"/>
-  </g>
-
-  <!-- click ripple at tip -->
-  <circle cx="886" cy="234" r="5" fill="${C.signal}" opacity="0.85"/>
-  <circle cx="886" cy="234" r="16" fill="none" stroke="${C.signal}" stroke-width="1.5" stroke-opacity="0.30"/>
-  <circle cx="886" cy="234" r="28" fill="none" stroke="${C.signal}" stroke-width="1" stroke-opacity="0.12"/>
+  <!-- glow behind the icon (composited separately) -->
+  <circle cx="960" cy="315" r="165" fill="url(#glowLogo)"/>
 
   <!-- inset frame -->
   <rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" fill="none"
@@ -121,14 +96,50 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
         font-size="22" fill="${C.faint}">opn-build.github.io</text>
 </svg>`;
 
+// ── Cursor overlay (composited on top of logo so it's always visible) ──────
+// Trail moves diagonally: ghosts go upper-left, main cursor bottom-right.
+// Tip positions are relative to the overlay's own (0,0).
+const CUR = `M 0,0 L 0,28 L 6.5,22 L 11.5,33 L 14.5,31.5 L 9.5,21 L 19,21 Z`;
+const cursorSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="140" height="175">
+  <g transform="translate(0,0) scale(2.5)" opacity="0.08">
+    <path d="${CUR}" fill="${C.signal}"/>
+  </g>
+  <g transform="translate(25,25) scale(2.5)" opacity="0.20">
+    <path d="${CUR}" fill="${C.signal}" stroke="${C.bgTop}" stroke-width="0.7" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(50,50) scale(2.5)" opacity="0.42">
+    <path d="${CUR}" fill="${C.signal}" stroke="${C.bgTop}" stroke-width="0.8" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(75,75) scale(2.5)">
+    <path d="${CUR}" fill="${C.signal}" stroke="${C.bgTop}" stroke-width="1" stroke-linejoin="round"/>
+    <path d="M 1,2 L 1,18 L 5,14 Z" fill="white" fill-opacity="0.30"/>
+  </g>
+  <circle cx="75" cy="75" r="3" fill="${C.signal}" opacity="0.90"/>
+  <circle cx="75" cy="75" r="10" fill="none" stroke="${C.signal}" stroke-width="1.2" stroke-opacity="0.35"/>
+  <circle cx="75" cy="75" r="18" fill="none" stroke="${C.signal}" stroke-width="0.8" stroke-opacity="0.15"/>
+</svg>`;
+
 const iconPath = join(root, "src", "assets", "icono.png");
+
+const LOGO = 280; // hero icon, right side — nearest-neighbor preserves crisp edges
+const logo = await sharp(iconPath)
+  .resize(LOGO, LOGO, { kernel: sharp.kernel.nearest })
+  .png().toBuffer();
+
+// Cursor overlay — rendered from SVG with transparent background
+const cursor = await sharp(Buffer.from(cursorSvg)).png().toBuffer();
+// Position so main cursor tip (local 75,75) lands at world (1020, 300)
+const CUR_LEFT = 1020 - 75; // = 945
+const CUR_TOP  = 300  - 75; // = 225
 
 const MARK = 58; // brand lockup icon, top-left next to the wordmark
 const mark = await sharp(iconPath).resize(MARK, MARK).png().toBuffer();
 
 await sharp(Buffer.from(svg))
   .composite([
-    { input: mark, left: 80, top: 72 },
+    { input: logo,   left: 960 - LOGO / 2, top: 315 - LOGO / 2 },
+    { input: cursor, left: CUR_LEFT,        top: CUR_TOP },
+    { input: mark,   left: 80,              top: 72 },
   ])
   .png()
   .toFile(join(root, "public", "og-image.png"));
