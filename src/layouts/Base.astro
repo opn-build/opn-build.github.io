@@ -30,7 +30,8 @@ const alternates = LOCALES.map((l) => ({
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0a0b0e" />
+    <meta name="theme-color" content="#0a0b0e" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f0f4f8" media="(prefers-color-scheme: light)" />
 
     {
       !noAlternates &&
@@ -45,7 +46,10 @@ const alternates = LOCALES.map((l) => ({
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <!-- Dark (default — all crawlers) -->
     <meta property="og:image" content={`${site}/og-image.png`} />
+    <!-- Light (Apple Messages / Safari link preview — respects media) -->
+    <meta property="og:image" content={`${site}/og-image-light.png`} media="(prefers-color-scheme: light)" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
