@@ -90,7 +90,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
         fill="url(#head)" letter-spacing="-3">session alive.</text>
 
   <!-- meta line -->
-  <text x="86" y="520" font-family="${MONO}" font-size="24" fill="${C.dim}" xml:space="preserve"><tspan>No telemetry</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>8 languages</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>MIT licensed</tspan></text>
+  <text x="86" y="520" font-family="${MONO}" font-size="24" fill="${C.dim}" xml:space="preserve"><tspan>No telemetry</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>8 languages</tspan><tspan fill="${C.signal}">   ·   </tspan><tspan>GPL-3.0</tspan></text>
 
   <!-- url -->
   <text x="${W - 40}" y="${H - 36}" text-anchor="end" font-family="${MONO}"
