@@ -59,7 +59,9 @@
     "size": "Taille",
     "requirements": "Windows 10 (1903+) ou Windows 11 · ~13 Mo RAM",
     "history": "Voir toutes les versions",
-    "unavailable": "Télécharger depuis GitHub"
+    "unavailable": "Télécharger depuis GitHub",
+    "portableNote": "Vous préférez ne rien installer ?",
+    "portableButton": "Télécharger le .zip portable"
   },
   "showcase": {
     "eyebrow": "Voyez-le en action",

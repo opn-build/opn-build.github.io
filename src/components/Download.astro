@@ -53,6 +53,15 @@ try {
             <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </a>
+
+        {release.portableUrl && (
+          <p class="portable">
+            {t("download.portableNote")}{" "}
+            <a href={release.portableUrl} rel="noopener">
+              {t("download.portableButton")}
+            </a>
+          </p>
+        )}
       </div>
 
       <!-- RIGHT: Windows installer mockup -->
@@ -178,6 +187,15 @@ try {
     transition: gap 0.2s var(--ease);
   }
   .history:hover { gap: 0.65rem; }
+  .portable {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+  .portable a {
+    color: var(--signal);
+  }
 
   /* ── MOCK WRAP ────────────────────────── */
   .mock-wrap {

@@ -9,13 +9,15 @@ export const RELEASES_HTML = `https://github.com/${RELEASES_REPO}/releases`;
 // Baked fallback — used if the GitHub API is unreachable during the build.
 // Keep this in sync with the most recent known release.
 const FALLBACK = {
-  version: "v1.2.0.1",
-  tag: "v1.2.0.1",
-  assetName: "OpenAlive_Setup_v1.2.0.1.exe",
+  version: "v1.3.0",
+  tag: "v1.3.0",
+  assetName: "OpenAlive_Setup_v1.3.0.exe",
   downloadUrl:
-    "https://github.com/opn-build/OpenAlive/releases/download/v1.2.0.1/OpenAlive_Setup_v1.2.0.1.exe",
-  sizeBytes: 3928424,
-  publishedAt: "2026-06-19T12:00:00Z",
+    "https://github.com/opn-build/OpenAlive/releases/download/v1.3.0/OpenAlive_Setup_v1.3.0.exe",
+  sizeBytes: 3929074,
+  portableUrl: null,
+  portableSize: null,
+  publishedAt: "2026-07-02T19:50:26Z",
   fromFallback: true,
 };
 
@@ -32,16 +34,24 @@ function pickInstaller(assets = []) {
   );
 }
 
+/** Pick the portable zip asset, if this release published one. */
+function pickPortable(assets = []) {
+  return assets.find((a) => /\.zip$/i.test(a.name)) || null;
+}
+
 /** Shape a raw GitHub release payload into the minimal object the UI needs. */
 export function shapeRelease(release) {
   const asset = pickInstaller(release.assets);
   if (!asset) return { ...FALLBACK };
+  const portable = pickPortable(release.assets);
   return {
     version: normalizeVersion(release.tag_name),
     tag: release.tag_name,
     assetName: asset.name,
     downloadUrl: asset.browser_download_url,
     sizeBytes: asset.size,
+    portableUrl: portable?.browser_download_url ?? null,
+    portableSize: portable?.size ?? null,
     publishedAt: release.published_at,
     fromFallback: false,
   };
