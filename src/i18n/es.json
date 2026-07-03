@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "OpenAlive — Mantené tu sesión de Windows activa",
+    "title": "OpenAlive — Mantén tu sesión de Windows activa",
     "description": "Una utilidad de Windows liviana, privada y open source que mantiene tu sesión activa. Sin telemetría, sin cuentas. 8 idiomas."
   },
   "nav": {
@@ -12,7 +12,7 @@
   "hero": {
     "badge": "Gratis y open source · GPLv3",
     "eyebrow": "Para Windows 10 y 11",
-    "title": "Mantené tu sesión viva.",
+    "title": "Mantén tu sesión viva.",
     "subtitle": "Una utilidad open source y liviana que evita que Windows entre en suspensión, bloquee la pantalla o muestre estado ausente — tu PC se queda encendida y tu sesión activa.",
     "cta": "Descargar instalador",
     "metaA": "Sin telemetría",
@@ -34,7 +34,7 @@
       },
       "schedule": {
         "title": "Control de horario",
-        "desc": "Definí tu jornada y una pausa de almuerzo opcional. OpenAlive solo actúa cuando vos querés."
+        "desc": "Define tu jornada y una pausa de almuerzo opcional. OpenAlive solo actúa cuando tú quieres."
       },
       "tray": {
         "title": "Bandeja del sistema",
@@ -42,7 +42,7 @@
       },
       "languages": {
         "title": "8 idiomas",
-        "desc": "Cambiá de idioma en vivo, sin reiniciar. Español, English, Português y cinco más."
+        "desc": "Cambia de idioma en vivo, sin reiniciar. Español, English, Português y cinco más."
       },
       "autostart": {
         "title": "Inicio automático",
@@ -56,7 +56,7 @@
   },
   "download": {
     "eyebrow": "Último release",
-    "title": "Descargá OpenAlive",
+    "title": "Descarga OpenAlive",
     "subtitle": "Un instalador pequeño. Sin permisos de admin. Se instala en segundos.",
     "button": "Descargar instalador",
     "published": "Publicado",
