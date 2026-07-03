@@ -25,12 +25,33 @@ const { lang, t, release } = Astro.props;
         <span class="gh-label">{t("nav.github")}</span>
       </a>
       <LangSwitcher lang={lang} />
-      <a
-        href={release.downloadUrl}
-        class="dl"
-        data-oa-download
-        download
-      >{t("nav.download")}</a>
+      {release.portableUrl ? (
+        <details class="dl-menu">
+          <summary class="dl">
+            {t("nav.download")}
+            <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </summary>
+          <div class="dl-panel" role="menu">
+            <a href={release.downloadUrl} data-oa-download download role="menuitem">
+              <strong>{t("nav.installer")}</strong>
+              <span>.exe</span>
+            </a>
+            <a href={release.portableUrl} data-oa-portable download role="menuitem">
+              <strong>{t("nav.portable")}</strong>
+              <span>.zip</span>
+            </a>
+          </div>
+        </details>
+      ) : (
+        <a
+          href={release.downloadUrl}
+          class="dl"
+          data-oa-download
+          download
+        >{t("nav.download")}</a>
+      )}
     </nav>
   </div>
 </header>
@@ -86,6 +107,65 @@ const { lang, t, release } = Astro.props;
     border-color: var(--signal);
     background: var(--signal-faint);
     color: var(--signal);
+  }
+  .dl-menu {
+    position: relative;
+  }
+  summary.dl {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  summary.dl::-webkit-details-marker {
+    display: none;
+  }
+  .chev {
+    transition: transform 0.2s var(--ease);
+    color: var(--text-faint);
+  }
+  .dl-menu[open] .chev {
+    transform: rotate(180deg);
+  }
+  .dl-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 160px;
+    background: var(--bg-elev-2);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.35rem;
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.8);
+    z-index: 50;
+    animation: drop 0.18s var(--ease);
+  }
+  @keyframes drop {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+  .dl-panel a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    transition: background 0.15s var(--ease), color 0.15s var(--ease);
+  }
+  .dl-panel a:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--signal);
+  }
+  .dl-panel span {
+    color: var(--text-faint);
+    font-size: 0.75rem;
   }
   .gh {
     display: inline-flex;

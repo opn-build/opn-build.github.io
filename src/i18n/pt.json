@@ -4,14 +4,16 @@
     "description": "Um utilitário leve, privado e open source para Windows que mantém sua sessão ativa. Sem telemetria, sem contas. 8 idiomas."
   },
   "nav": {
-    "download": "Baixar"
+    "download": "Baixar",
+    "installer": "Instalador",
+    "portable": "Portátil"
   },
   "hero": {
-    "badge": "Grátis e com licença MIT",
+    "badge": "Grátis e open source · GPLv3",
     "eyebrow": "Para Windows 10 e 11",
     "title": "Mantenha sua sessão viva.",
     "subtitle": "Um utilitário leve, privado e open source que mantém sua sessão do Windows ativa — para você continuar conectado, disponível e sem interrupções.",
-    "cta": "Baixar para Windows",
+    "cta": "Baixar instalador",
     "metaA": "Sem telemetria",
     "metaB": "8 idiomas",
     "metaC": "Sem admin"
@@ -54,14 +56,13 @@
     "eyebrow": "Último release",
     "title": "Baixe o OpenAlive",
     "subtitle": "Um instalador pequeno. Sem admin. Instala em segundos.",
-    "button": "Baixar para Windows",
+    "button": "Baixar instalador",
     "published": "Publicado",
     "size": "Tamanho",
     "requirements": "Windows 10 (1903+) ou Windows 11 · ~13 MB RAM",
     "history": "Ver todos os releases",
     "unavailable": "Baixar do GitHub",
-    "portableNote": "Prefere não instalar nada?",
-    "portableButton": "Baixar o .zip portátil"
+    "portableButton": "Baixar portátil"
   },
   "showcase": {
     "eyebrow": "Veja em ação",

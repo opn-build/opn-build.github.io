@@ -5,6 +5,8 @@
   },
   "nav": {
     "download": "Download",
+    "installer": "Installer",
+    "portable": "Portable",
     "github": "Source code"
   },
   "hero": {
@@ -12,7 +14,7 @@
     "eyebrow": "For Windows 10 & 11",
     "title": "Keep your session alive.",
     "subtitle": "A lightweight, open source utility that prevents sleep mode, screen lock, and away status — so your PC stays on and your session stays active.",
-    "cta": "Download for Windows",
+    "cta": "Download Installer",
     "metaA": "No telemetry",
     "metaB": "8 languages",
     "metaC": "No admin needed",
@@ -56,14 +58,13 @@
     "eyebrow": "Latest release",
     "title": "Download OpenAlive",
     "subtitle": "One small installer. No admin rights. Installs in seconds.",
-    "button": "Download for Windows",
+    "button": "Download Installer",
     "published": "Published",
     "size": "Size",
     "requirements": "Windows 10 (1903+) or Windows 11 · ~13 MB RAM",
     "history": "View all releases",
     "unavailable": "Download from GitHub",
-    "portableNote": "Prefer not to install anything?",
-    "portableButton": "Download the portable .zip"
+    "portableButton": "Download Portable"
   },
   "showcase": {
     "eyebrow": "See it in action",

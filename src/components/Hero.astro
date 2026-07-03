@@ -37,9 +37,15 @@ const size = formatSize(release.sizeBytes);
           </svg>
           {t("hero.cta")}
         </a>
-        <a class="btn btn-ghost" href={RELEASES_HTML} rel="noopener" target="_blank">
-          {t("download.history")}
-        </a>
+        {release.portableUrl ? (
+          <a class="btn btn-ghost" href={release.portableUrl} data-oa-portable rel="noopener">
+            {t("download.portableButton")}
+          </a>
+        ) : (
+          <a class="btn btn-ghost" href={RELEASES_HTML} rel="noopener" target="_blank">
+            {t("download.history")}
+          </a>
+        )}
       </div>
 
       <p class="cta-meta reveal" style="animation-delay:.34s">

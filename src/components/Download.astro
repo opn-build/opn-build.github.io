@@ -47,20 +47,20 @@ try {
 
         <p class="req">{t("download.requirements")} · <span data-oa-disk>{installedSize}</span> disk</p>
 
-        <a class="history" href={RELEASES_HTML} rel="noopener" target="_blank">
-          {t("download.history")}
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
-
-        {release.portableUrl && (
-          <p class="portable">
-            {t("download.portableNote")}{" "}
-            <a href={release.portableUrl} rel="noopener">
-              {t("download.portableButton")}
-            </a>
-          </p>
+        {release.portableUrl ? (
+          <a class="history" href={release.portableUrl} data-oa-portable rel="noopener">
+            {t("download.portableButton")}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        ) : (
+          <a class="history" href={RELEASES_HTML} rel="noopener" target="_blank">
+            {t("download.history")}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
         )}
       </div>
 
@@ -187,15 +187,6 @@ try {
     transition: gap 0.2s var(--ease);
   }
   .history:hover { gap: 0.65rem; }
-  .portable {
-    margin-top: 0.9rem;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--text-faint);
-  }
-  .portable a {
-    color: var(--signal);
-  }
 
   /* ── MOCK WRAP ────────────────────────── */
   .mock-wrap {

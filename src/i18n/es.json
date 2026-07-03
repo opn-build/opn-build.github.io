@@ -5,6 +5,8 @@
   },
   "nav": {
     "download": "Descargar",
+    "installer": "Instalador",
+    "portable": "Portable",
     "github": "Código fuente"
   },
   "hero": {
@@ -12,7 +14,7 @@
     "eyebrow": "Para Windows 10 y 11",
     "title": "Mantené tu sesión viva.",
     "subtitle": "Una utilidad open source y liviana que evita que Windows entre en suspensión, bloquee la pantalla o muestre estado ausente — tu PC se queda encendida y tu sesión activa.",
-    "cta": "Descargar para Windows",
+    "cta": "Descargar instalador",
     "metaA": "Sin telemetría",
     "metaB": "8 idiomas",
     "metaC": "Sin permisos de admin",
@@ -56,14 +58,13 @@
     "eyebrow": "Último release",
     "title": "Descargá OpenAlive",
     "subtitle": "Un instalador pequeño. Sin permisos de admin. Se instala en segundos.",
-    "button": "Descargar para Windows",
+    "button": "Descargar instalador",
     "published": "Publicado",
     "size": "Tamaño",
     "requirements": "Windows 10 (1903+) o Windows 11 · ~13 MB RAM",
     "history": "Ver todos los releases",
     "unavailable": "Descargar desde GitHub",
-    "portableNote": "¿Prefieres no instalar nada?",
-    "portableButton": "Descargar el .zip portátil"
+    "portableButton": "Descargar portable"
   },
   "showcase": {
     "eyebrow": "Velo en acción",

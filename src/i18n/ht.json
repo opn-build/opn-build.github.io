@@ -8,11 +8,11 @@
     "download": "Telechaje"
   },
   "hero": {
-    "badge": "Gratis e sou lisans MIT",
+    "badge": "Gratis e open source · GPLv3",
     "eyebrow": "Pou Windows 10 ak 11",
     "title": "Kenbe sesyon ou vivan.",
     "subtitle": "Yon zouti lejè, prive e open source ki kenbe sesyon Windows ou aktif — pou ou rete konekte, disponib e san entèripsyon.",
-    "cta": "Telechaje pou Windows",
+    "cta": "Telechaje enstalatè",
     "metaA": "San telemetri",
     "metaB": "8 lang",
     "metaC": "Pa bezwen admin"
@@ -34,7 +34,7 @@
     "eyebrow": "Dènye vèsyon",
     "title": "Telechaje OpenAlive",
     "subtitle": "Yon ti enstalatè. Pa bezwen admin. Enstale nan kèk segond.",
-    "button": "Telechaje pou Windows",
+    "button": "Telechaje enstalatè",
     "published": "Pibliye",
     "size": "Gwosè",
     "history": "Wè tout vèsyon yo",

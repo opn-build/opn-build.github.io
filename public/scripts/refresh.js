@@ -32,6 +32,11 @@
       setText("[data-oa-disk]", formatSize(asset.size * 1.7));
       setText("[data-oa-asset]", asset.name);
       setText("[data-oa-date]", formatDate(rel.published_at));
+
+      var portable = pickPortable(rel.assets);
+      if (portable) {
+        setAttr("[data-oa-portable]", "href", portable.browser_download_url);
+      }
     })
     .catch(function () {
       /* keep baked values */
@@ -61,6 +66,13 @@
       if (/\.exe$/i.test(assets[i].name)) return assets[i];
     }
     return assets[0];
+  }
+  function pickPortable(assets) {
+    if (!assets || !assets.length) return null;
+    for (var i = 0; i < assets.length; i++) {
+      if (/\.zip$/i.test(assets[i].name)) return assets[i];
+    }
+    return null;
   }
   function formatSize(bytes) {
     if (!bytes) return "";

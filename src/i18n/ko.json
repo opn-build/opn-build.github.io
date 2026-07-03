@@ -8,11 +8,11 @@
     "download": "다운로드"
   },
   "hero": {
-    "badge": "무료 · MIT 라이선스",
+    "badge": "무료 · 오픈소스 (GPLv3)",
     "eyebrow": "Windows 10 및 11 지원",
     "title": "세션을 살아 있게 유지하세요.",
     "subtitle": "Windows 세션을 활성 상태로 유지하는 가볍고, 사생활을 지키는 오픈 소스 유틸리티 — 로그인 상태를 유지하고 언제든 응답 가능하게.",
-    "cta": "Windows용 다운로드",
+    "cta": "설치 프로그램 다운로드",
     "metaA": "텔레메트리 없음",
     "metaB": "8개 언어",
     "metaC": "관리자 권한 불필요"
@@ -34,7 +34,7 @@
     "eyebrow": "최신 릴리스",
     "title": "OpenAlive 다운로드",
     "subtitle": "작은 설치 프로그램. 관리자 권한 불필요. 몇 초면 설치 완료.",
-    "button": "Windows용 다운로드",
+    "button": "설치 프로그램 다운로드",
     "published": "게시일",
     "size": "크기",
     "history": "모든 릴리스 보기",

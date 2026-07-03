@@ -8,11 +8,11 @@
     "download": "下载"
   },
   "hero": {
-    "badge": "免费 · MIT 许可",
+    "badge": "免费 · 开源 (GPLv3)",
     "eyebrow": "适用于 Windows 10 和 11",
     "title": "让你的会话保持活跃。",
     "subtitle": "一款轻量、私密、开源的工具，让你的 Windows 会话保持活跃——始终在线、随时可用、不被打断。",
-    "cta": "下载 Windows 版",
+    "cta": "下载安装程序",
     "metaA": "无遥测",
     "metaB": "8 种语言",
     "metaC": "无需管理员权限"
@@ -34,7 +34,7 @@
     "eyebrow": "最新版本",
     "title": "下载 OpenAlive",
     "subtitle": "一个小巧的安装包。无需管理员权限。几秒即可安装。",
-    "button": "下载 Windows 版",
+    "button": "下载安装程序",
     "published": "发布于",
     "size": "大小",
     "history": "查看所有版本",
